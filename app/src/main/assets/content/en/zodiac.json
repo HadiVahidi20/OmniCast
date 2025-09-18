@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-24",
+    "language": "en",
+    "itemCount": 2
+  },
+  "signs": [
+    {
+      "id": "aries",
+      "nameKey": "zodiac_aries",
+      "dateRange": "March 21 - April 19",
+      "element": "fire",
+      "symbol": "Ram",
+      "rulingPlanet": "Mars",
+      "luckyNumbers": [1, 8, 17],
+      "luckyColors": ["red", "orange"],
+      "compatibleSigns": ["leo", "sagittarius", "gemini", "aquarius"],
+      "qualities": ["cardinal"],
+      "polarity": "positive",
+      "description": "Aries is the first sign of the zodiac, symbolizing new beginnings, courage, and initiative. These individuals are known for their dynamic energy and pioneering spirit.",
+      "strengths": ["courageous", "determined", "confident", "enthusiastic", "optimistic", "honest", "passionate"],
+      "weaknesses": ["impatient", "moody", "short-tempered", "impulsive", "aggressive"],
+      "predictions": {
+        "daily": [
+          {
+            "id": "aries_daily_1",
+            "seed": 1,
+            "general": "Today your natural leadership abilities shine brightly. You'll find yourself taking charge of situations effortlessly, inspiring others to follow your lead. A burst of creative energy helps you tackle problems with innovative solutions.",
+            "love": "In matters of the heart, your passionate nature creates exciting moments with your partner or potential love interests. Be direct about your feelings, as your honesty will be appreciated.",
+            "career": "At work, your initiative catches positive attention from superiors. It's an excellent day to present new ideas or start projects you've been contemplating.",
+            "health": "Your energy levels are high today, making it ideal for physical activities. Consider challenging yourself with an intense workout or competitive sport.",
+            "luckyNumber": 7,
+            "luckyColor": "crimson",
+            "compatibility": "leo",
+            "mood": "energetic",
+            "tags": ["initiative", "leadership", "creativity", "energy", "passion"]
+          },
+          {
+            "id": "aries_daily_2",
+            "seed": 2,
+            "general": "Patience may be tested today as delays occur in your plans. Instead of pushing through obstacles forcefully, consider taking a step back to reassess your approach. Sometimes the indirect path leads to better outcomes.",
+            "love": "Communication with your partner requires extra care today. Listen as much as you speak, and try to understand perspectives different from your own. Single Aries might find connections in unexpected places.",
+            "career": "Collaborative projects highlight your day, requiring you to balance your independent nature with teamwork. Your contributions will be valuable, but so will your ability to compromise.",
+            "health": "Focus on flexibility exercises that calm your mind while strengthening your body. Activities like yoga or swimming would be particularly beneficial today.",
+            "luckyNumber": 3,
+            "luckyColor": "amber",
+            "compatibility": "libra",
+            "mood": "contemplative",
+            "tags": ["patience", "communication", "flexibility", "teamwork", "balance"]
+          },
+          {
+            "id": "aries_daily_3",
+            "seed": 3,
+            "general": "Your pioneering spirit leads you to explore new territories today, whether literally or figuratively. This is an excellent time for starting fresh projects or learning new skills. Trust your instincts when opportunities arise.",
+            "love": "Romance takes on an adventurous quality today. Planning something unexpected with your partner will reignite passion. Singles may find attraction with someone who shares their love for excitement.",
+            "career": "Your innovative ideas attract attention in professional settings. Don't hesitate to speak up in meetings or present alternative approaches to problems. Your unique perspective is valued.",
+            "health": "Channel your abundant energy into activities that challenge you physically and mentally. Consider trying a new sport or fitness routine that pushes your boundaries.",
+            "luckyNumber": 9,
+            "luckyColor": "scarlet",
+            "compatibility": "sagittarius",
+            "mood": "adventurous",
+            "tags": ["innovation", "adventure", "beginnings", "exploration", "discovery"]
+          }
+        ],
+        "weekly": [
+          {
+            "id": "aries_weekly_1",
+            "weekNumber": 1,
+            "startDate": "2025-01-20",
+            "endDate": "2025-01-26",
+            "general": "This week brings opportunities for personal growth through challenges that test your patience and determination. By midweek, a breakthrough moment shifts your perspective on a long-standing issue, opening new pathways forward. The weekend favors social connections and networking.",
+            "love": "Relationship dynamics evolve through honest conversations. Partners appreciate your directness, but remember to listen as much as you speak. Single Aries might find meaningful connections through friends or community activities.",
+            "career": "Professional developments require strategic thinking rather than impulsive action. Consider long-term implications before making important decisions. Mentorship opportunities may arise, either as recipient or provider.",
+            "health": "Balance high-energy activities with adequate rest periods. Your physical vitality is strong, but mental burnout is possible if you don't incorporate mindfulness practices.",
+            "luckyDays": ["Tuesday", "Friday", "Sunday"],
+            "challengingDays": ["Wednesday"],
+            "overallTrend": "Growth through challenges",
+            "tags": ["growth", "strategy", "balance", "communication", "networking"]
+          }
+        ]
+      }
+    },
+    {
+      "id": "leo",
+      "nameKey": "zodiac_leo",
+      "dateRange": "July 23 - August 22",
+      "element": "fire",
+      "symbol": "Lion",
+      "rulingPlanet": "Sun",
+      "luckyNumbers": [1, 3, 10, 19],
+      "luckyColors": ["gold", "orange"],
+      "compatibleSigns": ["aries", "sagittarius", "gemini", "libra"],
+      "qualities": ["fixed"],
+      "polarity": "positive",
+      "description": "Leo is ruled by the Sun and represents confidence, creativity, and natural leadership. Leos are known for their warm hearts, generous spirits, and dramatic flair.",
+      "strengths": ["creative", "passionate", "generous", "warm-hearted", "cheerful", "humorous"],
+      "weaknesses": ["arrogant", "stubborn", "self-centered", "lazy", "inflexible"],
+      "predictions": {
+        "daily": [
+          {
+            "id": "leo_daily_1",
+            "seed": 1,
+            "general": "Your natural charisma draws people to you today. You're in the spotlight, and you handle it with grace and confidence. Creative projects flourish under your golden touch, and others look to you for inspiration and guidance.",
+            "love": "Romance sparkles with theatrical flair today. Grand gestures and heartfelt declarations feel natural. Your warmth attracts admirers, while existing relationships benefit from your generous affection.",
+            "career": "Leadership opportunities present themselves naturally. Your confidence inspires your team, and superiors notice your ability to motivate others. Perfect day for presentations or public speaking.",
+            "health": "Your vitality is strong, and you feel radiant from within. Activities that make you feel proud and accomplished boost both physical and mental well-being. Dance or performance arts are especially beneficial.",
+            "luckyNumber": 5,
+            "luckyColor": "golden",
+            "compatibility": "aries",
+            "mood": "radiant",
+            "tags": ["charisma", "creativity", "leadership", "confidence", "warmth"]
+          },
+          {
+            "id": "leo_daily_2",
+            "seed": 2,
+            "general": "Today challenges your pride in positive ways. A situation requires you to step back and let others shine, teaching you valuable lessons about collaboration and humility. Your generous nature wins hearts even when you're not center stage.",
+            "love": "Supporting your partner's dreams and ambitions strengthens your bond. Show interest in their goals and celebrate their achievements. Single Leos attract partners by being genuinely supportive friends first.",
+            "career": "Teamwork takes precedence over individual glory. Your ability to lift others up while contributing your unique talents creates a harmonious work environment. Recognition comes through collective success.",
+            "health": "Group activities and team sports provide both physical exercise and social connection. Your competitive spirit thrives in friendly competition while building lasting friendships.",
+            "luckyNumber": 6,
+            "luckyColor": "sunset orange",
+            "compatibility": "libra",
+            "mood": "supportive",
+            "tags": ["humility", "teamwork", "support", "collaboration", "friendship"]
+          }
+        ],
+        "weekly": []
+      }
+    }
+  ]
+}
