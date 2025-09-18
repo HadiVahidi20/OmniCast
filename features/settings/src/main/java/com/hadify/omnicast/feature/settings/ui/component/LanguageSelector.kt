@@ -1,8 +1,5 @@
 package com.hadify.omnicast.feature.settings.ui.component
 
-class LanguageSelector {
-}package com.hadify.omnicast.feature.settings.ui.component
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup

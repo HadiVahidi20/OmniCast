@@ -1,8 +1,5 @@
 package com.hadify.omnicast.feature.settings.ui
 
-class SettingsViewModel {
-}package com.hadify.omnicast.feature.settings.ui
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hadify.omnicast.core.domain.model.AppSettings

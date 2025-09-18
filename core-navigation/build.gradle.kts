@@ -34,6 +34,8 @@ android {
 
 dependencies {
     implementation(project(":core-common"))
+    api(project(":core-ui"))
+
     // ← REMOVED: home module dependency to fix circular dependency
 
     implementation("androidx.core:core-ktx:1.12.0")
