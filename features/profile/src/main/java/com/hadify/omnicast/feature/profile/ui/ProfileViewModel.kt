@@ -37,29 +37,28 @@ class ProfileViewModel @Inject constructor(
      */
     private fun loadUserProfile() {
         viewModelScope.launch {
-            getUserProfileUseCase().collect { resource ->
-                when (resource) {
-                    is Resource.Loading -> {
-                        _uiState.value = _uiState.value.copy(isLoading = true, error = null)
-                    }
-                    is Resource.Success -> {
-                        val user = resource.data
-                        _uiState.value = _uiState.value.copy(
-                            isLoading = false,
-                            user = user,
-                            name = user?.name ?: "",
-                            birthdate = user?.birthdate,
-                            email = user?.email ?: "",
-                            location = user?.location ?: "",
-                            error = null
-                        )
-                    }
-                    is Resource.Error -> {
-                        _uiState.value = _uiState.value.copy(
-                            isLoading = false,
-                            error = resource.message
-                        )
-                    }
+            // از first() استفاده می‌کنیم تا فقط اولین نتیجه را بگیریم و flow را ببندیم
+            when (val resource = getUserProfileUseCase().first()) {
+                is Resource.Success -> {
+                    val user = resource.data
+                    _uiState.value = _uiState.value.copy(
+                        isLoading = false,
+                        user = user,
+                        name = user?.name ?: "",
+                        birthdate = user?.birthdate,
+                        email = user?.email ?: "",
+                        location = user?.location ?: "",
+                        error = null
+                    )
+                }
+                is Resource.Error -> {
+                    _uiState.value = _uiState.value.copy(
+                        isLoading = false,
+                        error = resource.message
+                    )
+                }
+                is Resource.Loading -> {
+                    _uiState.value = _uiState.value.copy(isLoading = true, error = null)
                 }
             }
         }
@@ -116,7 +115,7 @@ class ProfileViewModel @Inject constructor(
             val user = User(
                 id = currentState.user?.id ?: UUID.randomUUID().toString(),
                 name = currentState.name,
-                birthdate = currentState.birthdate, // ✅ FIXED: Removed unnecessary !! since we validated it above
+                birthdate = currentState.birthdate,
                 email = currentState.email.ifBlank { null },
                 location = currentState.location.ifBlank { null },
                 createdAt = currentState.user?.createdAt ?: LocalDateTime.now(),
@@ -126,9 +125,15 @@ class ProfileViewModel @Inject constructor(
             val result = saveUserUseCase(user)
             when (result) {
                 is Resource.Success -> {
-                    _uiState.value = currentState.copy(
+                    val savedUser = result.data
+                    // وضعیت UI را با اطلاعات جدید و ذخیره شده به روز می‌کنیم
+                    _uiState.value = _uiState.value.copy(
                         isSaving = false,
-                        user = result.data,
+                        user = savedUser,
+                        name = savedUser.name,
+                        birthdate = savedUser.birthdate,
+                        email = savedUser.email ?: "",
+                        location = savedUser.location ?: "",
                         showSuccess = true,
                         error = null
                     )
