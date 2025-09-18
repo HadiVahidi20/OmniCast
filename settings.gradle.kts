@@ -26,11 +26,9 @@ include(":core-ui")
 include(":core-navigation")
 include(":core-data")
 include(":core-domain")
-include(":home")
+
+// ماژول‌های features
+include(":features:home") // مسیر صحیح ماژول home
 include(":features:settings")
-
-
-// ✅ FIXED: Correct module paths that match your directory structure
 include(":features:profile")
 include(":features:zodiac")
-include(":settings")

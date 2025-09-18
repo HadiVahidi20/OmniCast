@@ -64,9 +64,8 @@ dependencies {
     implementation(project(":features:profile"))
     implementation(project(":features:zodiac"))
     implementation(project(":features:settings"))
-
-    // Feature modules - app level can depend on both core and feature modules
-    implementation(project(":home"))
+    implementation(project(":features:home"))
+    // Feature modules - app level can depend on both core and feature module
 
     // Android Core
     implementation("androidx.core:core-ktx:1.12.0")
