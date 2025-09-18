@@ -13,6 +13,7 @@ import com.hadify.omnicast.core.ui.theme.ThemeManager
 import com.hadify.omnicast.home.HomeScreen
 import com.hadify.omnicast.feature.zodiac.ui.ZodiacScreen
 import com.hadify.omnicast.feature.profile.ui.screen.ProfileScreen
+import com.hadify.omnicast.feature.settings.ui.SettingsScreen  // ← NEW: Settings import
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -48,7 +49,7 @@ fun OmniCastApp(
         val navController = rememberNavController()
 
         // Now we provide the actual screen composables to the navigation graph
-        // This resolves circular dependency by moving screen composition to app level
+        // ✅ UPDATED: Now includes working Settings screen!
         OmniCastNavGraph(
             navController = navController,
             navigationManager = navigationManager,
@@ -56,7 +57,7 @@ fun OmniCastApp(
                 HomeScreen()
             },
             zodiacScreen = {
-                // ✅ REAL ZODIAC SCREEN - This is the exciting part!
+                // ✅ WORKING: Real zodiac screen with full functionality
                 ZodiacScreen(
                     onNavigateBack = { navigationManager.navigateBack() },
                     onNavigateToProfile = { navigationManager.navigateToProfile() }
@@ -64,6 +65,11 @@ fun OmniCastApp(
             },
             profileScreen = {
                 ProfileScreen(
+                    onNavigateBack = { navigationManager.navigateBack() }
+                )
+            },
+            settingsScreen = {  // ← NEW: Real settings screen instead of placeholder
+                SettingsScreen(
                     onNavigateBack = { navigationManager.navigateBack() }
                 )
             }

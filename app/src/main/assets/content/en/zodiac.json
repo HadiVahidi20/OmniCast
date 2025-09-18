@@ -1,9 +1,9 @@
 {
   "metadata": {
     "version": "1.0.0",
-    "lastUpdated": "2025-01-24",
+    "lastUpdated": "2025-01-21",
     "language": "en",
-    "itemCount": 2
+    "itemCount": 12
   },
   "signs": [
     {
@@ -15,12 +15,14 @@
       "rulingPlanet": "Mars",
       "luckyNumbers": [1, 8, 17],
       "luckyColors": ["red", "orange"],
-      "compatibleSigns": ["leo", "sagittarius", "gemini", "aquarius"],
+      "compatibleSigns": ["leo", "sagittarius"],
       "qualities": ["cardinal"],
       "polarity": "positive",
       "description": "Aries is the first sign of the zodiac, symbolizing new beginnings, courage, and initiative. These individuals are known for their dynamic energy and pioneering spirit.",
       "strengths": ["courageous", "determined", "confident", "enthusiastic", "optimistic", "honest", "passionate"],
       "weaknesses": ["impatient", "moody", "short-tempered", "impulsive", "aggressive"],
+      "hasImage": true,
+      "imageFileName": "zodiac_aries.png",
       "predictions": {
         "daily": [
           {
@@ -66,19 +68,127 @@
         "weekly": [
           {
             "id": "aries_weekly_1",
-            "weekNumber": 1,
-            "startDate": "2025-01-20",
-            "endDate": "2025-01-26",
+            "weekNumber": 12,
+            "startDate": "2025-03-17",
+            "endDate": "2025-03-23",
             "general": "This week brings opportunities for personal growth through challenges that test your patience and determination. By midweek, a breakthrough moment shifts your perspective on a long-standing issue, opening new pathways forward. The weekend favors social connections and networking.",
             "love": "Relationship dynamics evolve through honest conversations. Partners appreciate your directness, but remember to listen as much as you speak. Single Aries might find meaningful connections through friends or community activities.",
             "career": "Professional developments require strategic thinking rather than impulsive action. Consider long-term implications before making important decisions. Mentorship opportunities may arise, either as recipient or provider.",
             "health": "Balance high-energy activities with adequate rest periods. Your physical vitality is strong, but mental burnout is possible if you don't incorporate mindfulness practices.",
-            "luckyDays": ["Tuesday", "Friday", "Sunday"],
+            "luckyDays": ["Tuesday", "Friday"],
             "challengingDays": ["Wednesday"],
-            "overallTrend": "Growth through challenges",
+            "overallTrend": "Growth",
             "tags": ["growth", "strategy", "balance", "communication", "networking"]
           }
         ]
+      }
+    },
+    {
+      "id": "taurus",
+      "nameKey": "zodiac_taurus",
+      "dateRange": "April 20 - May 20",
+      "element": "earth",
+      "symbol": "Bull",
+      "rulingPlanet": "Venus",
+      "luckyNumbers": [2, 6, 9, 12, 24],
+      "luckyColors": ["green", "pink"],
+      "compatibleSigns": ["virgo", "capricorn"],
+      "qualities": ["fixed"],
+      "polarity": "negative",
+      "description": "Taurus is known for stability, practicality, and a love of luxury. These individuals value security and comfort, approaching life with determination and patience.",
+      "strengths": ["reliable", "patient", "practical", "devoted", "responsible", "stable"],
+      "weaknesses": ["stubborn", "possessive", "uncompromising", "materialistic"],
+      "hasImage": true,
+      "imageFileName": "zodiac_taurus.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "taurus_daily_1",
+            "seed": 1,
+            "general": "Your steady approach to challenges pays off today. Focus on building something lasting rather than seeking quick results. Your patience and persistence create opportunities for long-term success.",
+            "love": "Romance blooms through simple, genuine gestures. Your partner appreciates your reliability and the comfort you provide. Focus on creating cozy, intimate moments together.",
+            "career": "Your practical skills are in high demand today. Colleagues value your methodical approach and attention to detail. Financial matters may require your careful consideration.",
+            "health": "Focus on maintaining your physical well-being through good nutrition and gentle exercise. Your body responds well to consistent, moderate activities.",
+            "luckyNumber": 6,
+            "luckyColor": "emerald",
+            "compatibility": "virgo",
+            "mood": "grounded",
+            "tags": ["stability", "patience", "reliability", "comfort", "security"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "gemini",
+      "nameKey": "zodiac_gemini",
+      "dateRange": "May 21 - June 20",
+      "element": "air",
+      "symbol": "Twins",
+      "rulingPlanet": "Mercury",
+      "luckyNumbers": [5, 7, 14, 23],
+      "luckyColors": ["yellow", "blue"],
+      "compatibleSigns": ["libra", "aquarius"],
+      "qualities": ["mutable"],
+      "polarity": "positive",
+      "description": "Gemini is characterized by curiosity, versatility, and excellent communication skills. These individuals are quick thinkers who love learning and sharing information.",
+      "strengths": ["adaptable", "versatile", "communicative", "witty", "intellectual", "eloquent"],
+      "weaknesses": ["nervous", "inconsistent", "indecisive", "superficial"],
+      "hasImage": true,
+      "imageFileName": "zodiac_gemini.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "gemini_daily_1",
+            "seed": 1,
+            "general": "Your curiosity leads you to interesting discoveries today. Conversations spark new ideas and perspectives. Your adaptability helps you navigate changing circumstances with ease.",
+            "love": "Communication is key in your relationships today. Share your thoughts and listen actively to your partner. New connections may form through intellectual exchanges.",
+            "career": "Your versatility shines in the workplace. Multiple projects or tasks may demand your attention, and you handle them skillfully. Networking brings valuable opportunities.",
+            "health": "Mental stimulation is as important as physical activity today. Balance screen time with activities that engage both mind and body.",
+            "luckyNumber": 5,
+            "luckyColor": "silver",
+            "compatibility": "aquarius",
+            "mood": "curious",
+            "tags": ["communication", "versatility", "curiosity", "adaptability", "learning"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "cancer",
+      "nameKey": "zodiac_cancer",
+      "dateRange": "June 21 - July 22",
+      "element": "water",
+      "symbol": "Crab",
+      "rulingPlanet": "Moon",
+      "luckyNumbers": [2, 7, 11, 16, 20, 25],
+      "luckyColors": ["white", "silver"],
+      "compatibleSigns": ["scorpio", "pisces"],
+      "qualities": ["cardinal"],
+      "polarity": "negative",
+      "description": "Cancer is deeply intuitive and emotionally intelligent. These individuals are nurturing, protective, and strongly connected to home and family.",
+      "strengths": ["tenacious", "highly imaginative", "loyal", "emotional", "sympathetic", "persuasive"],
+      "weaknesses": ["moody", "pessimistic", "suspicious", "manipulative", "insecure"],
+      "hasImage": true,
+      "imageFileName": "zodiac_cancer.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "cancer_daily_1",
+            "seed": 1,
+            "general": "Your intuition is particularly strong today. Trust your instincts when making decisions. Focus on nurturing relationships and creating emotional security for yourself and loved ones.",
+            "love": "Emotional connections deepen today. Your caring nature draws people closer. Family relationships may need your attention and support.",
+            "career": "Your empathy and understanding make you an excellent team player today. Consider how your work affects others and lead with compassion.",
+            "health": "Pay attention to your emotional well-being. Activities near water or in nature will be particularly restorative for your spirit.",
+            "luckyNumber": 2,
+            "luckyColor": "pearl",
+            "compatibility": "scorpio",
+            "mood": "nurturing",
+            "tags": ["intuition", "nurturing", "emotions", "family", "security"]
+          }
+        ],
+        "weekly": []
       }
     },
     {
@@ -90,39 +200,280 @@
       "rulingPlanet": "Sun",
       "luckyNumbers": [1, 3, 10, 19],
       "luckyColors": ["gold", "orange"],
-      "compatibleSigns": ["aries", "sagittarius", "gemini", "libra"],
+      "compatibleSigns": ["aries", "sagittarius"],
       "qualities": ["fixed"],
       "polarity": "positive",
-      "description": "Leo is ruled by the Sun and represents confidence, creativity, and natural leadership. Leos are known for their warm hearts, generous spirits, and dramatic flair.",
+      "description": "Leo radiates confidence, creativity, and natural leadership. These individuals love to be in the spotlight and inspire others with their warmth and generosity.",
       "strengths": ["creative", "passionate", "generous", "warm-hearted", "cheerful", "humorous"],
       "weaknesses": ["arrogant", "stubborn", "self-centered", "lazy", "inflexible"],
+      "hasImage": true,
+      "imageFileName": "zodiac_leo.png",
       "predictions": {
         "daily": [
           {
             "id": "leo_daily_1",
             "seed": 1,
-            "general": "Your natural charisma draws people to you today. You're in the spotlight, and you handle it with grace and confidence. Creative projects flourish under your golden touch, and others look to you for inspiration and guidance.",
-            "love": "Romance sparkles with theatrical flair today. Grand gestures and heartfelt declarations feel natural. Your warmth attracts admirers, while existing relationships benefit from your generous affection.",
-            "career": "Leadership opportunities present themselves naturally. Your confidence inspires your team, and superiors notice your ability to motivate others. Perfect day for presentations or public speaking.",
-            "health": "Your vitality is strong, and you feel radiant from within. Activities that make you feel proud and accomplished boost both physical and mental well-being. Dance or performance arts are especially beneficial.",
-            "luckyNumber": 5,
+            "general": "Your natural charisma attracts positive attention today. Creative projects flourish under your passionate approach. Leadership opportunities may present themselves.",
+            "love": "Romance is highlighted today. Your warm and generous nature makes you irresistible. Express your feelings boldly and enjoy the spotlight in love.",
+            "career": "Your creativity and leadership skills are recognized. This is an excellent day for presentations, performances, or any work that showcases your talents.",
+            "health": "Your vitality is strong today. Engage in activities that make you feel confident and energized. Outdoor activities under the sun will boost your mood.",
+            "luckyNumber": 1,
             "luckyColor": "golden",
             "compatibility": "aries",
-            "mood": "radiant",
-            "tags": ["charisma", "creativity", "leadership", "confidence", "warmth"]
-          },
+            "mood": "confident",
+            "tags": ["creativity", "leadership", "confidence", "passion", "generosity"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "virgo",
+      "nameKey": "zodiac_virgo",
+      "dateRange": "August 23 - September 22",
+      "element": "earth",
+      "symbol": "Virgin",
+      "rulingPlanet": "Mercury",
+      "luckyNumbers": [3, 6, 7, 12, 20],
+      "luckyColors": ["navy blue", "grey"],
+      "compatibleSigns": ["taurus", "capricorn"],
+      "qualities": ["mutable"],
+      "polarity": "negative",
+      "description": "Virgo is analytical, practical, and detail-oriented. These individuals strive for perfection and are excellent at organizing and improving systems.",
+      "strengths": ["loyal", "analytical", "kind", "hardworking", "practical"],
+      "weaknesses": ["shyness", "worry", "overly critical", "perfectionist"],
+      "hasImage": true,
+      "imageFileName": "zodiac_virgo.png",
+      "predictions": {
+        "daily": [
           {
-            "id": "leo_daily_2",
-            "seed": 2,
-            "general": "Today challenges your pride in positive ways. A situation requires you to step back and let others shine, teaching you valuable lessons about collaboration and humility. Your generous nature wins hearts even when you're not center stage.",
-            "love": "Supporting your partner's dreams and ambitions strengthens your bond. Show interest in their goals and celebrate their achievements. Single Leos attract partners by being genuinely supportive friends first.",
-            "career": "Teamwork takes precedence over individual glory. Your ability to lift others up while contributing your unique talents creates a harmonious work environment. Recognition comes through collective success.",
-            "health": "Group activities and team sports provide both physical exercise and social connection. Your competitive spirit thrives in friendly competition while building lasting friendships.",
+            "id": "virgo_daily_1",
+            "seed": 1,
+            "general": "Your attention to detail serves you well today. Focus on organizing and improving your surroundings. Small steps toward your goals create significant progress.",
+            "love": "Show your love through practical actions and thoughtful gestures. Your partner appreciates your reliability and the care you put into the relationship.",
+            "career": "Your analytical skills are in high demand. Detailed work or problem-solving tasks suit you perfectly today. Your efficiency impresses colleagues.",
+            "health": "Focus on maintaining healthy routines. Your body responds well to consistent care and attention to nutritional needs.",
             "luckyNumber": 6,
-            "luckyColor": "sunset orange",
+            "luckyColor": "sage",
+            "compatibility": "capricorn",
+            "mood": "methodical",
+            "tags": ["organization", "detail", "efficiency", "improvement", "service"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "libra",
+      "nameKey": "zodiac_libra",
+      "dateRange": "September 23 - October 22",
+      "element": "air",
+      "symbol": "Scales",
+      "rulingPlanet": "Venus",
+      "luckyNumbers": [4, 6, 13, 15, 24],
+      "luckyColors": ["blue", "green"],
+      "compatibleSigns": ["gemini", "aquarius"],
+      "qualities": ["cardinal"],
+      "polarity": "positive",
+      "description": "Libra seeks harmony, balance, and beauty in all things. These individuals are diplomatic, fair-minded, and have a natural sense of justice.",
+      "strengths": ["cooperative", "diplomatic", "gracious", "fair-minded", "social"],
+      "weaknesses": ["indecisive", "avoids confrontations", "self-pity", "unreliable"],
+      "hasImage": true,
+      "imageFileName": "zodiac_libra.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "libra_daily_1",
+            "seed": 1,
+            "general": "Balance and harmony are your themes today. Seek compromise in challenging situations. Your diplomatic skills help resolve conflicts peacefully.",
+            "love": "Relationships benefit from your natural charm and desire for harmony. Focus on creating beautiful, peaceful moments with your partner.",
+            "career": "Collaborative projects flourish under your guidance. Your ability to see all sides of an issue makes you valuable in negotiations and team settings.",
+            "health": "Maintain balance in all aspects of your life. Both mental and physical equilibrium contribute to your overall well-being today.",
+            "luckyNumber": 6,
+            "luckyColor": "rose",
+            "compatibility": "gemini",
+            "mood": "harmonious",
+            "tags": ["balance", "harmony", "diplomacy", "beauty", "cooperation"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "scorpio",
+      "nameKey": "zodiac_scorpio",
+      "dateRange": "October 23 - November 21",
+      "element": "water",
+      "symbol": "Scorpion",
+      "rulingPlanet": "Mars/Pluto",
+      "luckyNumbers": [8, 11, 18, 22],
+      "luckyColors": ["deep red", "black"],
+      "compatibleSigns": ["cancer", "pisces"],
+      "qualities": ["fixed"],
+      "polarity": "negative",
+      "description": "Scorpio is intense, passionate, and deeply intuitive. These individuals possess strong will and are capable of profound transformation.",
+      "strengths": ["resourceful", "brave", "passionate", "stubborn", "true friend"],
+      "weaknesses": ["distrusting", "jealous", "secretive", "violent"],
+      "hasImage": true,
+      "imageFileName": "zodiac_scorpio.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "scorpio_daily_1",
+            "seed": 1,
+            "general": "Your intensity and focus bring powerful results today. Trust your instincts and dig deeper into matters that interest you. Transformation is possible through facing challenges.",
+            "love": "Passionate emotions run deep today. Your magnetic presence attracts intense connections. Be open about your feelings with those you trust.",
+            "career": "Your determination and investigative skills serve you well. Complex problems or research-based tasks are perfect for your focused approach.",
+            "health": "Your physical and emotional strength is highlighted. Channel your intensity into healthy outlets like exercise or creative expression.",
+            "luckyNumber": 8,
+            "luckyColor": "crimson",
+            "compatibility": "cancer",
+            "mood": "intense",
+            "tags": ["intensity", "passion", "transformation", "intuition", "depth"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "sagittarius",
+      "nameKey": "zodiac_sagittarius",
+      "dateRange": "November 22 - December 21",
+      "element": "fire",
+      "symbol": "Archer",
+      "rulingPlanet": "Jupiter",
+      "luckyNumbers": [3, 9, 15, 21, 24],
+      "luckyColors": ["purple", "turquoise"],
+      "compatibleSigns": ["aries", "leo"],
+      "qualities": ["mutable"],
+      "polarity": "positive",
+      "description": "Sagittarius loves adventure, philosophy, and expanding horizons. These individuals are optimistic, freedom-loving, and always seeking truth and meaning.",
+      "strengths": ["generous", "idealistic", "great sense of humor", "adventurous"],
+      "weaknesses": ["promises more than can deliver", "impatient", "tactless"],
+      "hasImage": true,
+      "imageFileName": "zodiac_sagittarius.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "sagittarius_daily_1",
+            "seed": 1,
+            "general": "Your adventurous spirit leads you to exciting opportunities today. Expand your horizons through learning, travel, or meeting new people. Your optimism is contagious.",
+            "love": "Adventure and exploration enrich your relationships today. Plan something exciting with your partner or be open to meeting someone from a different background.",
+            "career": "Your enthusiasm and broad perspective are valuable today. International or educational opportunities may present themselves.",
+            "health": "Physical activity that feels like play rather than work suits you perfectly. Outdoor adventures or sports activities energize your body and spirit.",
+            "luckyNumber": 9,
+            "luckyColor": "indigo",
+            "compatibility": "leo",
+            "mood": "adventurous",
+            "tags": ["adventure", "optimism", "exploration", "freedom", "philosophy"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "capricorn",
+      "nameKey": "zodiac_capricorn",
+      "dateRange": "December 22 - January 19",
+      "element": "earth",
+      "symbol": "Goat",
+      "rulingPlanet": "Saturn",
+      "luckyNumbers": [4, 8, 13, 22],
+      "luckyColors": ["brown", "black"],
+      "compatibleSigns": ["taurus", "virgo"],
+      "qualities": ["cardinal"],
+      "polarity": "negative",
+      "description": "Capricorn is ambitious, disciplined, and practical. These individuals are natural leaders who work steadily toward their goals with patience and determination.",
+      "strengths": ["responsible", "disciplined", "self-control", "good managers"],
+      "weaknesses": ["know-it-all", "unforgiving", "condescending", "pessimistic"],
+      "hasImage": true,
+      "imageFileName": "zodiac_capricorn.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "capricorn_daily_1",
+            "seed": 1,
+            "general": "Your disciplined approach pays dividends today. Focus on long-term goals and take practical steps toward achievement. Your leadership abilities are recognized by others.",
+            "love": "Commitment and stability characterize your relationships today. Your reliable nature provides security for your partner. Traditional expressions of love are favored.",
+            "career": "Your professional reputation benefits from your consistent efforts. Authority figures may offer recognition or new responsibilities.",
+            "health": "Structured exercise routines and consistent health habits serve you well. Focus on building strong foundations for long-term wellness.",
+            "luckyNumber": 8,
+            "luckyColor": "charcoal",
+            "compatibility": "virgo",
+            "mood": "determined",
+            "tags": ["ambition", "discipline", "responsibility", "leadership", "achievement"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "aquarius",
+      "nameKey": "zodiac_aquarius",
+      "dateRange": "January 20 - February 18",
+      "element": "air",
+      "symbol": "Water Bearer",
+      "rulingPlanet": "Saturn/Uranus",
+      "luckyNumbers": [4, 7, 11, 22, 29],
+      "luckyColors": ["blue", "silver"],
+      "compatibleSigns": ["gemini", "libra"],
+      "qualities": ["fixed"],
+      "polarity": "positive",
+      "description": "Aquarius is innovative, independent, and humanitarian. These individuals are forward-thinking visionaries who value freedom and equality.",
+      "strengths": ["progressive", "original", "independent", "humanitarian"],
+      "weaknesses": ["runs from emotional expression", "temperamental", "uncompromising", "aloof"],
+      "hasImage": true,
+      "imageFileName": "zodiac_aquarius.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "aquarius_daily_1",
+            "seed": 1,
+            "general": "Your innovative ideas find receptive audiences today. Think outside the box and embrace your uniqueness. Group activities or humanitarian causes may call to you.",
+            "love": "Friendship forms the foundation of your romantic connections today. Intellectual compatibility and shared ideals strengthen relationships.",
+            "career": "Your original thinking and technical skills are valuable today. Collaborative projects or technology-related work favor your unique perspective.",
+            "health": "Mental stimulation is as important as physical activity. Try new approaches to wellness that align with your innovative nature.",
+            "luckyNumber": 11,
+            "luckyColor": "electric blue",
             "compatibility": "libra",
-            "mood": "supportive",
-            "tags": ["humility", "teamwork", "support", "collaboration", "friendship"]
+            "mood": "innovative",
+            "tags": ["innovation", "independence", "originality", "humanity", "progress"]
+          }
+        ],
+        "weekly": []
+      }
+    },
+    {
+      "id": "pisces",
+      "nameKey": "zodiac_pisces",
+      "dateRange": "February 19 - March 20",
+      "element": "water",
+      "symbol": "Fish",
+      "rulingPlanet": "Jupiter/Neptune",
+      "luckyNumbers": [3, 9, 12, 15, 18, 24],
+      "luckyColors": ["sea green", "lavender"],
+      "compatibleSigns": ["cancer", "scorpio"],
+      "qualities": ["mutable"],
+      "polarity": "negative",
+      "description": "Pisces is compassionate, intuitive, and deeply spiritual. These individuals are dreamers with rich inner lives and strong empathetic abilities.",
+      "strengths": ["compassionate", "artistic", "intuitive", "gentle", "wise", "musical"],
+      "weaknesses": ["fearful", "overly trusting", "sad", "desire to escape reality"],
+      "hasImage": true,
+      "imageFileName": "zodiac_pisces.png",
+      "predictions": {
+        "daily": [
+          {
+            "id": "pisces_daily_1",
+            "seed": 1,
+            "general": "Your intuition and compassion guide you to meaningful experiences today. Trust your inner wisdom and be open to spiritual or artistic inspiration.",
+            "love": "Emotional sensitivity deepens your connections today. Your empathy and understanding create beautiful moments with loved ones.",
+            "career": "Your creativity and intuitive insights are valuable in the workplace. Artistic or healing professions especially benefit from your natural gifts.",
+            "health": "Pay attention to your emotional and spiritual well-being. Activities near water or meditation practices will restore your energy.",
+            "luckyNumber": 12,
+            "luckyColor": "seafoam",
+            "compatibility": "scorpio",
+            "mood": "intuitive",
+            "tags": ["intuition", "compassion", "creativity", "spirituality", "empathy"]
           }
         ],
         "weekly": []

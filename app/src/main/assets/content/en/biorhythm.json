@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-21",
+    "language": "en"
+  },
+  "cycles": {
+    "physical": {
+      "duration": 23,
+      "description": "The physical cycle affects strength, stamina, coordination, and overall physical well-being.",
+      "states": {
+        "high": [
+          {
+            "id": "physical_high_1",
+            "seed": 1,
+            "intensity": 95,
+            "interpretation": "Your physical energy is at its peak today. Your body feels strong, resilient, and capable. This is an excellent time for physical activities that require stamina and endurance. Athletic performance is enhanced, and your resistance to illness is strong.",
+            "advice": "Make the most of this energy surge by engaging in challenging physical activities or starting a new fitness regimen. Your body can handle more intense workouts during this phase.",
+            "tags": ["energy", "strength", "vitality", "endurance", "activity"]
+          },
+          {
+            "id": "physical_high_2",
+            "seed": 2,
+            "intensity": 85,
+            "interpretation": "Your physical capabilities are notably strong today. You'll likely notice increased endurance and a general sense of well-being. Physical tasks feel easier, and you recover quickly from exertion.",
+            "advice": "Channel this physical energy into productive activities. Consider tackling physically demanding tasks or engaging in competitive sports where your enhanced coordination will serve you well.",
+            "tags": ["strength", "coordination", "productivity", "competition", "recovery"]
+          }
+        ],
+        "medium": [
+          {
+            "id": "physical_medium_1",
+            "seed": 1,
+            "intensity": 50,
+            "interpretation": "Your physical energy is stable and balanced today. While not at peak levels, you have sufficient stamina for regular activities and moderate exercise. Your body responds well to routine physical demands.",
+            "advice": "Maintain regular activity levels and focus on consistent habits rather than pushing extremes. This is a good time for refining techniques and working on form rather than pushing for personal records.",
+            "tags": ["balance", "stability", "routine", "moderation", "technique"]
+          }
+        ],
+        "low": [
+          {
+            "id": "physical_low_1",
+            "seed": 1,
+            "intensity": 15,
+            "interpretation": "Your physical energy is at a low point in its cycle. You may feel more fatigued than usual, and physical tasks might require more effort. Recovery from exertion takes longer, and you may be more susceptible to minor ailments.",
+            "advice": "Focus on gentle activities and adequate rest. This is not the time for starting intense new physical routines or pushing your limits. Light stretching, walking, or restorative practices like yoga are beneficial.",
+            "tags": ["rest", "recovery", "gentleness", "restoration", "self-care"]
+          }
+        ]
+      }
+    },
+    "emotional": {
+      "duration": 28,
+      "description": "The emotional cycle influences feelings, creativity, sensitivity, mood, and interpersonal relationships.",
+      "states": {
+        "high": [
+          {
+            "id": "emotional_high_1",
+            "seed": 1,
+            "intensity": 90,
+            "interpretation": "Your emotional awareness and expression are heightened today. You're likely feeling more connected to others and to your own feelings. Creative inspiration flows easily, and your capacity for empathy and understanding is strong.",
+            "advice": "This is an excellent time for creative projects, meaningful conversations, and cultivating relationships. Express your feelings openly and engage with art or music that moves you.",
+            "tags": ["creativity", "connection", "expression", "empathy", "inspiration"]
+          }
+        ],
+        "medium": [
+          {
+            "id": "emotional_medium_1",
+            "seed": 1,
+            "intensity": 50,
+            "interpretation": "Your emotional state is balanced and stable today. You're able to handle both positive and challenging emotions with equanimity. Relationships benefit from your steady emotional presence.",
+            "advice": "Use this emotional balance to work on long-term relationship goals and to provide support to others who may need it. Focus on maintaining healthy emotional boundaries.",
+            "tags": ["balance", "stability", "support", "boundaries", "equanimity"]
+          }
+        ],
+        "low": [
+          {
+            "id": "emotional_low_1",
+            "seed": 1,
+            "intensity": 20,
+            "interpretation": "Your emotional energy may be at a low ebb today. You might feel more sensitive than usual, or experience mood swings. Social interactions may feel draining, and you might prefer solitude.",
+            "advice": "Be gentle with yourself emotionally. Avoid making major relationship decisions today and focus on self-care activities that nurture your emotional well-being.",
+            "tags": ["sensitivity", "solitude", "self-care", "gentleness", "introspection"]
+          }
+        ]
+      }
+    },
+    "intellectual": {
+      "duration": 33,
+      "description": "The intellectual cycle affects analytical thinking, memory, logic, and mental acuity.",
+      "states": {
+        "high": [
+          {
+            "id": "intellectual_high_1",
+            "seed": 1,
+            "intensity": 92,
+            "interpretation": "Your mental acuity is sharp today. Complex problems seem more manageable, and you're able to see patterns and solutions that might normally escape you. Learning and memory are enhanced.",
+            "advice": "Take advantage of this mental clarity by tackling challenging intellectual tasks. This is an excellent time for studying, strategic planning, or engaging in complex problem-solving.",
+            "tags": ["clarity", "problem-solving", "learning", "strategy", "analysis"]
+          }
+        ],
+        "medium": [
+          {
+            "id": "intellectual_medium_1",
+            "seed": 1,
+            "intensity": 50,
+            "interpretation": "Your intellectual capabilities are functioning at a steady, reliable level today. You can handle routine mental tasks effectively and maintain good focus on your work.",
+            "advice": "Focus on consistent, methodical work rather than attempting to tackle the most challenging intellectual problems. Routine tasks and steady progress are favored.",
+            "tags": ["consistency", "routine", "focus", "reliability", "method"]
+          }
+        ],
+        "low": [
+          {
+            "id": "intellectual_low_1",
+            "seed": 1,
+            "intensity": 25,
+            "interpretation": "Mental fatigue may affect your cognitive performance today. You might find it harder to concentrate, remember details, or think through complex problems. Decision-making may feel more difficult.",
+            "advice": "Avoid making important decisions or tackling complex intellectual challenges today. Focus on routine tasks and give your mind time to rest and recharge.",
+            "tags": ["rest", "routine", "simplicity", "recharge", "patience"]
+          }
+        ]
+      }
+    },
+    "intuitive": {
+      "duration": 38,
+      "description": "The intuitive cycle influences perception beyond the five senses, gut feelings, spiritual awareness, and inner knowing.",
+      "states": {
+        "high": [
+          {
+            "id": "intuitive_high_1",
+            "seed": 1,
+            "intensity": 88,
+            "interpretation": "Your intuitive abilities are heightened today. You may experience strong gut feelings, vivid dreams, or sudden insights. Your connection to your inner wisdom is particularly strong.",
+            "advice": "Trust your instincts and pay attention to subtle cues and feelings. This is an excellent time for meditation, spiritual practices, or creative endeavors that rely on inspiration.",
+            "tags": ["intuition", "insight", "spirituality", "inspiration", "inner wisdom"]
+          }
+        ],
+        "medium": [
+          {
+            "id": "intuitive_medium_1",
+            "seed": 1,
+            "intensity": 50,
+            "interpretation": "Your intuitive sense operates at a balanced level today. You're able to access your inner guidance while remaining grounded in practical reality.",
+            "advice": "Balance intuitive insights with logical analysis. Use both your rational mind and your intuitive sense to guide your decisions and actions.",
+            "tags": ["balance", "guidance", "grounding", "integration", "wisdom"]
+          }
+        ],
+        "low": [
+          {
+            "id": "intuitive_low_1",
+            "seed": 1,
+            "intensity": 30,
+            "interpretation": "Your intuitive channels may feel less accessible today. You might find yourself relying more heavily on logical analysis and external information rather than inner knowing.",
+            "advice": "Focus on gathering concrete information and using logical reasoning for decision-making. Avoid forcing intuitive insights and trust that your inner wisdom will return in due time.",
+            "tags": ["logic", "analysis", "information", "reasoning", "patience"]
+          }
+        ]
+      }
+    }
+  }
+}

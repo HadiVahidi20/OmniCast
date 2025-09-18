@@ -27,7 +27,10 @@ include(":core-navigation")
 include(":core-data")
 include(":core-domain")
 include(":home")
+include(":features:settings")
+
 
 // ✅ FIXED: Correct module paths that match your directory structure
 include(":features:profile")
 include(":features:zodiac")
+include(":settings")
