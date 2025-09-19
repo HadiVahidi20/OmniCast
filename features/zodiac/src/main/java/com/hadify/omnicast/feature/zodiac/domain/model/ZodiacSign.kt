@@ -1,178 +1,142 @@
+// ZodiacSign.kt
 package com.hadify.omnicast.feature.zodiac.domain.model
 
 import java.time.LocalDate
 
 /**
- * Zodiac signs with their properties and date ranges
+ * Zodiac Sign enumeration with all 12 zodiac signs
  */
 enum class ZodiacSign(
     val displayName: String,
-    val startMonth: Int,
-    val startDay: Int,
-    val endMonth: Int,
-    val endDay: Int,
+    val symbol: String,
     val element: ZodiacElement,
     val quality: ZodiacQuality,
     val rulingPlanet: String,
-    val symbol: String,
-    val luckyNumbers: List<Int>,
-    val luckyColors: List<String>,
-    val compatibleSigns: List<String>
+    val dateRange: String,
+    val startMonth: Int,
+    val startDay: Int,
+    val endMonth: Int,
+    val endDay: Int
 ) {
     ARIES(
         displayName = "Aries",
-        startMonth = 3, startDay = 21,
-        endMonth = 4, endDay = 19,
+        symbol = "♈",
         element = ZodiacElement.FIRE,
         quality = ZodiacQuality.CARDINAL,
         rulingPlanet = "Mars",
-        symbol = "Ram",
-        luckyNumbers = listOf(1, 8, 17),
-        luckyColors = listOf("Red", "Orange"),
-        compatibleSigns = listOf("Leo", "Sagittarius", "Gemini", "Aquarius")
+        dateRange = "March 21 - April 19",
+        startMonth = 3, startDay = 21,
+        endMonth = 4, endDay = 19
     ),
-
     TAURUS(
         displayName = "Taurus",
-        startMonth = 4, startDay = 20,
-        endMonth = 5, endDay = 20,
+        symbol = "♉",
         element = ZodiacElement.EARTH,
         quality = ZodiacQuality.FIXED,
         rulingPlanet = "Venus",
-        symbol = "Bull",
-        luckyNumbers = listOf(2, 6, 9, 12, 24),
-        luckyColors = listOf("Green", "Pink"),
-        compatibleSigns = listOf("Virgo", "Capricorn", "Cancer", "Pisces")
+        dateRange = "April 20 - May 20",
+        startMonth = 4, startDay = 20,
+        endMonth = 5, endDay = 20
     ),
-
     GEMINI(
         displayName = "Gemini",
-        startMonth = 5, startDay = 21,
-        endMonth = 6, endDay = 20,
+        symbol = "♊",
         element = ZodiacElement.AIR,
         quality = ZodiacQuality.MUTABLE,
         rulingPlanet = "Mercury",
-        symbol = "Twins",
-        luckyNumbers = listOf(5, 7, 14, 23),
-        luckyColors = listOf("Yellow", "Blue"),
-        compatibleSigns = listOf("Libra", "Aquarius", "Aries", "Leo")
+        dateRange = "May 21 - June 20",
+        startMonth = 5, startDay = 21,
+        endMonth = 6, endDay = 20
     ),
-
     CANCER(
         displayName = "Cancer",
-        startMonth = 6, startDay = 21,
-        endMonth = 7, endDay = 22,
+        symbol = "♋",
         element = ZodiacElement.WATER,
         quality = ZodiacQuality.CARDINAL,
         rulingPlanet = "Moon",
-        symbol = "Crab",
-        luckyNumbers = listOf(2, 7, 11, 16, 20, 25),
-        luckyColors = listOf("White", "Silver"),
-        compatibleSigns = listOf("Scorpio", "Pisces", "Taurus", "Virgo")
+        dateRange = "June 21 - July 22",
+        startMonth = 6, startDay = 21,
+        endMonth = 7, endDay = 22
     ),
-
     LEO(
         displayName = "Leo",
-        startMonth = 7, startDay = 23,
-        endMonth = 8, endDay = 22,
+        symbol = "♌",
         element = ZodiacElement.FIRE,
         quality = ZodiacQuality.FIXED,
         rulingPlanet = "Sun",
-        symbol = "Lion",
-        luckyNumbers = listOf(1, 3, 10, 19),
-        luckyColors = listOf("Gold", "Orange"),
-        compatibleSigns = listOf("Aries", "Sagittarius", "Gemini", "Libra")
+        dateRange = "July 23 - August 22",
+        startMonth = 7, startDay = 23,
+        endMonth = 8, endDay = 22
     ),
-
     VIRGO(
         displayName = "Virgo",
-        startMonth = 8, startDay = 23,
-        endMonth = 9, endDay = 22,
+        symbol = "♍",
         element = ZodiacElement.EARTH,
         quality = ZodiacQuality.MUTABLE,
         rulingPlanet = "Mercury",
-        symbol = "Virgin",
-        luckyNumbers = listOf(3, 6, 7, 12, 20),
-        luckyColors = listOf("Navy Blue", "Grey"),
-        compatibleSigns = listOf("Taurus", "Capricorn", "Cancer", "Scorpio")
+        dateRange = "August 23 - September 22",
+        startMonth = 8, startDay = 23,
+        endMonth = 9, endDay = 22
     ),
-
     LIBRA(
         displayName = "Libra",
-        startMonth = 9, startDay = 23,
-        endMonth = 10, endDay = 22,
+        symbol = "♎",
         element = ZodiacElement.AIR,
         quality = ZodiacQuality.CARDINAL,
         rulingPlanet = "Venus",
-        symbol = "Scales",
-        luckyNumbers = listOf(4, 6, 13, 15, 24),
-        luckyColors = listOf("Blue", "Green"),
-        compatibleSigns = listOf("Gemini", "Aquarius", "Leo", "Sagittarius")
+        dateRange = "September 23 - October 22",
+        startMonth = 9, startDay = 23,
+        endMonth = 10, endDay = 22
     ),
-
     SCORPIO(
         displayName = "Scorpio",
-        startMonth = 10, startDay = 23,
-        endMonth = 11, endDay = 21,
+        symbol = "♏",
         element = ZodiacElement.WATER,
         quality = ZodiacQuality.FIXED,
         rulingPlanet = "Mars/Pluto",
-        symbol = "Scorpion",
-        luckyNumbers = listOf(8, 11, 18, 22),
-        luckyColors = listOf("Deep Red", "Black"),
-        compatibleSigns = listOf("Cancer", "Pisces", "Virgo", "Capricorn")
+        dateRange = "October 23 - November 21",
+        startMonth = 10, startDay = 23,
+        endMonth = 11, endDay = 21
     ),
-
     SAGITTARIUS(
         displayName = "Sagittarius",
-        startMonth = 11, startDay = 22,
-        endMonth = 12, endDay = 21,
+        symbol = "♐",
         element = ZodiacElement.FIRE,
         quality = ZodiacQuality.MUTABLE,
         rulingPlanet = "Jupiter",
-        symbol = "Archer",
-        luckyNumbers = listOf(3, 9, 15, 21, 24),
-        luckyColors = listOf("Purple", "Turquoise"),
-        compatibleSigns = listOf("Aries", "Leo", "Libra", "Aquarius")
+        dateRange = "November 22 - December 21",
+        startMonth = 11, startDay = 22,
+        endMonth = 12, endDay = 21
     ),
-
     CAPRICORN(
         displayName = "Capricorn",
-        startMonth = 12, startDay = 22,
-        endMonth = 1, endDay = 19,
+        symbol = "♑",
         element = ZodiacElement.EARTH,
         quality = ZodiacQuality.CARDINAL,
         rulingPlanet = "Saturn",
-        symbol = "Goat",
-        luckyNumbers = listOf(4, 8, 13, 22),
-        luckyColors = listOf("Brown", "Black"),
-        compatibleSigns = listOf("Taurus", "Virgo", "Scorpio", "Pisces")
+        dateRange = "December 22 - January 19",
+        startMonth = 12, startDay = 22,
+        endMonth = 1, endDay = 19
     ),
-
     AQUARIUS(
         displayName = "Aquarius",
-        startMonth = 1, startDay = 20,
-        endMonth = 2, endDay = 18,
+        symbol = "♒",
         element = ZodiacElement.AIR,
         quality = ZodiacQuality.FIXED,
         rulingPlanet = "Saturn/Uranus",
-        symbol = "Water Bearer",
-        luckyNumbers = listOf(4, 7, 11, 22, 29),
-        luckyColors = listOf("Blue", "Silver"),
-        compatibleSigns = listOf("Gemini", "Libra", "Aries", "Sagittarius")
+        dateRange = "January 20 - February 18",
+        startMonth = 1, startDay = 20,
+        endMonth = 2, endDay = 18
     ),
-
     PISCES(
         displayName = "Pisces",
-        startMonth = 2, startDay = 19,
-        endMonth = 3, endDay = 20,
+        symbol = "♓",
         element = ZodiacElement.WATER,
         quality = ZodiacQuality.MUTABLE,
         rulingPlanet = "Jupiter/Neptune",
-        symbol = "Fish",
-        luckyNumbers = listOf(3, 9, 12, 15, 18, 24),
-        luckyColors = listOf("Sea Green", "Lavender"),
-        compatibleSigns = listOf("Cancer", "Scorpio", "Taurus", "Capricorn")
+        dateRange = "February 19 - March 20",
+        startMonth = 2, startDay = 19,
+        endMonth = 3, endDay = 20
     );
 
     companion object {
@@ -184,20 +148,16 @@ enum class ZodiacSign(
             val day = birthdate.dayOfMonth
 
             return values().find { sign ->
-                when {
-                    // Handle Capricorn (spans year boundary)
-                    sign == CAPRICORN -> {
-                        (month == 12 && day >= 22) || (month == 1 && day <= 19)
-                    }
-                    // Handle other signs
-                    sign.startMonth == sign.endMonth -> {
-                        month == sign.startMonth && day >= sign.startDay && day <= sign.endDay
-                    }
-                    // Handle signs that span two months
-                    else -> {
-                        (month == sign.startMonth && day >= sign.startDay) ||
-                                (month == sign.endMonth && day <= sign.endDay)
-                    }
+                if (sign.startMonth <= sign.endMonth) {
+                    // Normal date range (e.g., Taurus: April 20 - May 20)
+                    (month == sign.startMonth && day >= sign.startDay) ||
+                            (month == sign.endMonth && day <= sign.endDay) ||
+                            (month > sign.startMonth && month < sign.endMonth)
+                } else {
+                    // Year-crossing date range (e.g., Capricorn: Dec 22 - Jan 19)
+                    (month == sign.startMonth && day >= sign.startDay) ||
+                            (month == sign.endMonth && day <= sign.endDay) ||
+                            (month > sign.startMonth) || (month < sign.endMonth)
                 }
             } ?: ARIES // Default fallback
         }
@@ -205,7 +165,7 @@ enum class ZodiacSign(
 }
 
 /**
- * Zodiac elements
+ * Zodiac Elements
  */
 enum class ZodiacElement(val displayName: String) {
     FIRE("Fire"),
@@ -215,10 +175,74 @@ enum class ZodiacElement(val displayName: String) {
 }
 
 /**
- * Zodiac qualities
+ * Zodiac Qualities
  */
 enum class ZodiacQuality(val displayName: String) {
     CARDINAL("Cardinal"),
     FIXED("Fixed"),
     MUTABLE("Mutable")
 }
+
+// HoroscopeReading.kt
+package com.hadify.omnicast.feature.zodiac.domain.model
+
+import java.time.LocalDate
+import java.util.*
+
+/**
+ * Daily Horoscope Reading domain model
+ */
+data class HoroscopeReading(
+    val id: String = UUID.randomUUID().toString(),
+    val zodiacSign: ZodiacSign,
+    val date: LocalDate,
+    val general: String,
+    val love: String,
+    val career: String,
+    val health: String,
+    val luckyNumber: Int,
+    val luckyColor: String,
+    val compatibility: ZodiacSign,
+    val mood: String,
+    val tags: List<String> = emptyList(),
+    val intensity: Float = 0.5f // 0.0 to 1.0
+)
+
+// WeeklyHoroscopeReading.kt
+package com.hadify.omnicast.feature.zodiac.domain.model
+
+import java.time.LocalDate
+import java.util.*
+
+/**
+ * Weekly Horoscope Reading domain model
+ */
+data class WeeklyHoroscopeReading(
+    val id: String = UUID.randomUUID().toString(),
+    val zodiacSign: ZodiacSign,
+    val weekStartDate: LocalDate,
+    val weekEndDate: LocalDate,
+    val general: String,
+    val love: String,
+    val career: String,
+    val health: String,
+    val luckyDays: List<String>,
+    val challengingDays: List<String>,
+    val overallTrend: String,
+    val tags: List<String> = emptyList()
+)
+
+// ZodiacCompatibility.kt
+package com.hadify.omnicast.feature.zodiac.domain.model
+
+/**
+ * Zodiac compatibility model
+ */
+data class ZodiacCompatibility(
+    val sign1: ZodiacSign,
+    val sign2: ZodiacSign,
+    val compatibilityScore: Float, // 0.0 to 1.0
+    val description: String,
+    val strengths: List<String>,
+    val challenges: List<String>
+)

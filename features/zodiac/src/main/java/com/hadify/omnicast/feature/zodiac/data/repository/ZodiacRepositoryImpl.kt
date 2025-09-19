@@ -1,3 +1,4 @@
+// ZodiacRepositoryImpl.kt - Complete implementation with missing functions
 package com.hadify.omnicast.feature.zodiac.data.repository
 
 import com.hadify.omnicast.feature.zodiac.domain.model.HoroscopeReading
@@ -14,6 +15,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.temporal.WeekFields
@@ -22,7 +24,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Implementation of ZodiacRepository
+ * Complete implementation of ZodiacRepository
  * Handles loading zodiac content from JSON assets and caching in database
  */
 @Singleton
@@ -187,7 +189,7 @@ class ZodiacRepositoryImpl @Inject constructor(
     // Private helper methods
 
     /**
-     * Generate daily horoscope reading
+     * Generate daily horoscope reading from JSON data
      */
     private suspend fun generateDailyHoroscope(
         zodiacSign: ZodiacSign,
@@ -195,15 +197,11 @@ class ZodiacRepositoryImpl @Inject constructor(
     ): HoroscopeReading {
         val zodiacData = loadZodiacData()
         val signData = zodiacData.signs.find { it.id == zodiacSign.name.lowercase() }
-            ?: throw IllegalArgumentException("Zodiac sign data not found")
+            ?: throw IllegalArgumentException("Sign data not found for ${zodiacSign.name}")
 
-        // Use date as seed for deterministic but varied readings
-        val seed = (date.toEpochDay() + zodiacSign.ordinal).toInt()
-        val random = Random(seed.toLong())
-
-        // Select predictions based on seed
-        val predictions = signData.predictions.daily
-        val selectedPrediction = predictions[seed % predictions.size]
+        // Use date as seed for consistent daily predictions
+        val seed = (date.toEpochDay() % signData.predictions.daily.size).toInt()
+        val selectedPrediction = signData.predictions.daily[seed.coerceAtLeast(0)]
 
         return HoroscopeReading(
             id = "${zodiacSign.name.lowercase()}_${date}",
@@ -218,7 +216,7 @@ class ZodiacRepositoryImpl @Inject constructor(
             compatibility = ZodiacSign.valueOf(selectedPrediction.compatibility.uppercase()),
             mood = selectedPrediction.mood,
             tags = selectedPrediction.tags,
-            intensity = 0.5f + (random.nextFloat() * 0.5f) // 0.5 to 1.0
+            intensity = 0.5f + (seed * 0.1f) // Vary intensity based on seed
         )
     }
 
@@ -227,30 +225,27 @@ class ZodiacRepositoryImpl @Inject constructor(
      */
     private suspend fun generateWeeklyHoroscope(
         zodiacSign: ZodiacSign,
-        weekStart: LocalDate
+        weekStartDate: LocalDate
     ): WeeklyHoroscopeReading {
         val zodiacData = loadZodiacData()
         val signData = zodiacData.signs.find { it.id == zodiacSign.name.lowercase() }
-            ?: throw IllegalArgumentException("Zodiac sign data not found")
+            ?: throw IllegalArgumentException("Sign data not found for ${zodiacSign.name}")
 
-        val weekEnd = weekStart.plusDays(6)
-        val seed = (weekStart.toEpochDay() / 7 + zodiacSign.ordinal).toInt()
-
-        // Use weekly predictions if available, otherwise generate from daily
-        val weeklyPredictions = signData.predictions.weekly
-        val selectedWeekly = if (weeklyPredictions.isNotEmpty()) {
-            weeklyPredictions[seed % weeklyPredictions.size]
+        // Use week start date as seed for consistent weekly predictions
+        val weekOfYear = weekStartDate.dayOfYear / 7
+        val selectedWeekly = if (signData.predictions.weekly.isNotEmpty()) {
+            signData.predictions.weekly[weekOfYear % signData.predictions.weekly.size]
         } else {
-            // Generate weekly from daily data
+            // Generate from daily predictions if no weekly data
             null
         }
 
         return WeeklyHoroscopeReading(
-            id = "${zodiacSign.name.lowercase()}_week_${weekStart}",
+            id = "${zodiacSign.name.lowercase()}_week_${weekStartDate}",
             zodiacSign = zodiacSign,
-            weekStartDate = weekStart,
-            weekEndDate = weekEnd,
-            general = selectedWeekly?.general ?: "This week brings opportunities for growth and new perspectives.",
+            weekStartDate = weekStartDate,
+            weekEndDate = weekStartDate.plusDays(6),
+            general = selectedWeekly?.general ?: "This week brings opportunities for growth and self-reflection.",
             love = selectedWeekly?.love ?: "Relationships benefit from open communication and understanding.",
             career = selectedWeekly?.career ?: "Professional matters require patience and strategic thinking.",
             health = selectedWeekly?.health ?: "Focus on balance between activity and rest for optimal well-being.",
@@ -265,22 +260,22 @@ class ZodiacRepositoryImpl @Inject constructor(
      * Load zodiac data from JSON assets
      */
     private suspend fun loadZodiacData(): ZodiacDataModel {
-        // Step 1: Load the raw JSON content as a string
         val jsonResult = contentLoader.loadRawContent(ContentType.ZODIAC)
 
-        val jsonString = when(jsonResult) {
-            is Resource.Success -> jsonResult.data
-            is Resource.Error -> throw Exception("Failed to load zodiac JSON: ${jsonResult.message}")
-            is Resource.Loading -> throw Exception("Unexpected loading state")
-        }
-
-        // Step 2: Use the configured parser from ContentLoader
-        val parsedResult = contentLoader.parseJson(jsonString, ZodiacDataModel.serializer())
-
-        return when(parsedResult) {
-            is Resource.Success -> parsedResult.data
-            is Resource.Error -> throw Exception("Failed to parse zodiac JSON: ${parsedResult.message}")
-            is Resource.Loading -> throw Exception("Unexpected loading state during parsing")
+        return when (jsonResult) {
+            is Resource.Success -> {
+                try {
+                    Json.decodeFromString(ZodiacDataModel.serializer(), jsonResult.data)
+                } catch (e: Exception) {
+                    throw Exception("Failed to parse zodiac JSON: ${e.message}")
+                }
+            }
+            is Resource.Error -> {
+                throw Exception("Failed to load zodiac JSON: ${jsonResult.message}")
+            }
+            is Resource.Loading -> {
+                throw Exception("Unexpected loading state")
+            }
         }
     }
 
@@ -309,7 +304,7 @@ class ZodiacRepositoryImpl @Inject constructor(
     private fun ZodiacEntity.toDomain(): HoroscopeReading {
         return HoroscopeReading(
             id = id,
-            zodiacSign = ZodiacSign.valueOf(zodiacSignName),
+            zodiacSign = ZodiacSign.valueOf(zodiacSignName.uppercase()),
             date = date,
             general = general,
             love = love,
@@ -317,7 +312,7 @@ class ZodiacRepositoryImpl @Inject constructor(
             health = health,
             luckyNumber = luckyNumber,
             luckyColor = luckyColor,
-            compatibility = ZodiacSign.valueOf(compatibilitySignName),
+            compatibility = ZodiacSign.valueOf(compatibilitySignName.uppercase()),
             mood = mood,
             tags = tags,
             intensity = intensity
@@ -346,7 +341,7 @@ class ZodiacRepositoryImpl @Inject constructor(
     private fun WeeklyZodiacEntity.toDomain(): WeeklyHoroscopeReading {
         return WeeklyHoroscopeReading(
             id = id,
-            zodiacSign = ZodiacSign.valueOf(zodiacSignName),
+            zodiacSign = ZodiacSign.valueOf(zodiacSignName.uppercase()),
             weekStartDate = weekStartDate,
             weekEndDate = weekEndDate,
             general = general,
@@ -361,7 +356,7 @@ class ZodiacRepositoryImpl @Inject constructor(
     }
 }
 
-// Data models for JSON parsing
+// Data models for JSON parsing (these should match the JSON structure)
 
 @Serializable
 data class ZodiacDataModel(
@@ -393,8 +388,6 @@ data class ZodiacSignData(
     val description: String,
     val strengths: List<String>,
     val weaknesses: List<String>,
-    val hasImage: Boolean? = null, // Make optional to handle absence
-    val imageFileName: String? = null, // Make optional
     val predictions: PredictionsData
 )
 
