@@ -9,7 +9,6 @@ import com.hadify.omnicast.core.data.local.dao.ZodiacDao
 import com.hadify.omnicast.core.data.local.entity.ZodiacEntity
 import com.hadify.omnicast.core.data.local.entity.WeeklyZodiacEntity
 import com.hadify.omnicast.core.data.source.ContentLoader
-import com.hadify.omnicast.core.data.model.ContentType
 import com.hadify.omnicast.core.data.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

@@ -1,6 +1,5 @@
 package com.hadify.omnicast.core.data.source
 
-import com.hadify.omnicast.core.data.model.ContentType
 import com.hadify.omnicast.core.data.util.Resource
 
 /**

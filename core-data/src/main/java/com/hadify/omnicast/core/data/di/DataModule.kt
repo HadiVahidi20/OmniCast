@@ -46,8 +46,8 @@ object DataModule {
         return Room.databaseBuilder(
             context.applicationContext,
             OmniCastDatabase::class.java,
-            OmniCastDatabase.DATABASE_NAME
-        )
+            DATABASE_NAME)
+
             .fallbackToDestructiveMigration() // For development - remove in production
             .build()
     }

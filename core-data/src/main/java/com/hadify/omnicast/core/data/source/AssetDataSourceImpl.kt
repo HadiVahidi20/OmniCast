@@ -1,7 +1,6 @@
 package com.hadify.omnicast.core.data.source
 
 import android.content.Context
-import com.hadify.omnicast.core.data.model.ContentType
 import com.hadify.omnicast.core.data.util.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

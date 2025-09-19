@@ -27,7 +27,7 @@ android {
 
 dependencies {
     implementation(project(":core-common"))
-    implementation(project(":core-domain"))
+    api(project(":core-domain"))
 
     implementation("androidx.core:core-ktx:1.12.0")
 
