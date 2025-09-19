@@ -3,21 +3,17 @@ package com.hadify.omnicast.feature.profile.data.repository
 import com.hadify.omnicast.feature.profile.domain.model.User
 import com.hadify.omnicast.feature.profile.domain.repository.UserRepository
 import com.hadify.omnicast.core.data.local.dao.UserDao
-import com.hadify.omnicast.core.data.local.entity.UserEntity
 import com.hadify.omnicast.core.data.util.Resource
 import com.hadify.omnicast.core.common.util.DateTimeUtils
+import com.hadify.omnicast.feature.profile.data.mapper.toDomain // Import
+import com.hadify.omnicast.feature.profile.data.mapper.toEntity   // Import
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.time.LocalDate
-import java.time.LocalDateTime
 import javax.inject.Inject
 import javax.inject.Singleton
 import android.util.Log
 
-/**
- * Implementation of UserRepository
- * FIXED: Removed API version requirements and added proper error handling
- */
 @Singleton
 class UserRepositoryImpl @Inject constructor(
     private val userDao: UserDao
@@ -27,10 +23,6 @@ class UserRepositoryImpl @Inject constructor(
         private const val TAG = "UserRepositoryImpl"
     }
 
-    /**
-     * Get current user profile as Flow
-     * UI will automatically update when this changes
-     */
     override fun getCurrentUser(): Flow<Resource<User?>> {
         return userDao.getCurrentUser().map { userEntity ->
             try {
@@ -43,9 +35,6 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Get user by ID
-     */
     override suspend fun getUserById(userId: String): Resource<User?> {
         return try {
             Log.d(TAG, "Getting user by ID: $userId")
@@ -57,21 +46,15 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Save user profile (insert or update)
-     * FIXED: No longer requires API 26+, uses DateTimeUtils
-     */
     override suspend fun saveUser(user: User): Resource<User> {
         return try {
             Log.d(TAG, "Saving user: ${user.name}, birthdate: ${user.birthdate}")
 
-            // Validate birthdate
             if (!DateTimeUtils.isValidBirthdate(user.birthdate)) {
                 Log.e(TAG, "Invalid birthdate provided: ${user.birthdate}")
                 return Resource.error("Invalid birthdate. Please select a valid date.")
             }
 
-            // Use DateTimeUtils for safe DateTime creation
             val updatedUser = user.copy(updatedAt = DateTimeUtils.now())
             val userEntity = updatedUser.toEntity()
 
@@ -85,27 +68,17 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Update user profile
-     * FIXED: No longer requires API 26+, uses DateTimeUtils
-     */
     override suspend fun updateUser(user: User): Resource<User> {
         return try {
             Log.d(TAG, "Updating user: ${user.name}")
-
-            // Validate birthdate
             if (!DateTimeUtils.isValidBirthdate(user.birthdate)) {
                 Log.e(TAG, "Invalid birthdate provided for update: ${user.birthdate}")
                 return Resource.error("Invalid birthdate. Please select a valid date.")
             }
-
-            // Use DateTimeUtils for safe DateTime creation
             val updatedUser = user.copy(updatedAt = DateTimeUtils.now())
             val userEntity = updatedUser.toEntity()
-
             userDao.updateUser(userEntity)
             Log.d(TAG, "User updated successfully: ${user.name}")
-
             Resource.success(updatedUser)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to update user: ${user.name}", e)
@@ -113,9 +86,6 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Delete user profile
-     */
     override suspend fun deleteUser(userId: String): Resource<Unit> {
         return try {
             Log.d(TAG, "Deleting user: $userId")
@@ -128,9 +98,6 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Check if user exists
-     */
     override suspend fun userExists(): Boolean {
         return try {
             val exists = userDao.userExists()
@@ -142,29 +109,21 @@ class UserRepositoryImpl @Inject constructor(
         }
     }
 
-    /**
-     * Get user's birthdate - CRITICAL for other developers!
-     * This is used by ALL divination features for calculations
-     */
-    override suspend fun getUserBirthdate(): LocalDate? {
+    override suspend fun getUserBirthdate(): Resource<LocalDate?> {
         return try {
-            val userEntity = userDao.getCurrentUserSync()
-            val birthdate = userEntity?.birthdate
+            val birthdate = userDao.getUserBirthdate()
             Log.d(TAG, "Retrieved user birthdate: $birthdate")
-            birthdate
+            Resource.success(birthdate)
         } catch (e: Exception) {
             Log.e(TAG, "Failed to get user birthdate", e)
-            null
+            Resource.error(e)
         }
     }
 
-    /**
-     * Get user's age - CRITICAL for other developers!
-     */
     override suspend fun getUserAge(): Int? {
         return try {
-            val birthdate = getUserBirthdate()
-            birthdate?.let { DateTimeUtils.calculateAge(it) }
+            val userEntity = userDao.getCurrentUserSync()
+            userEntity?.birthdate?.let { DateTimeUtils.calculateAge(it) }
         } catch (e: Exception) {
             Log.e(TAG, "Failed to calculate user age", e)
             null

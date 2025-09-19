@@ -57,6 +57,13 @@ interface UserDao {
     suspend fun getUserBirthdate(): LocalDate?
 
     /**
+     * Synchronously get the current user.
+     * This is useful for background tasks where a Flow is not needed.
+     */
+    @Query("SELECT * FROM users ORDER BY createdAt DESC LIMIT 1")
+    suspend fun getCurrentUserSync(): UserEntity?
+
+    /**
      * Delete all users (useful for testing)
      */
     @Query("DELETE FROM users")

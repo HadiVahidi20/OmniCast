@@ -45,4 +45,6 @@ interface UserRepository {
      * Get user's birthdate (critical for other features!)
      */
     suspend fun getUserBirthdate(): Resource<java.time.LocalDate?>
+    suspend fun getUserAge(): Int?
+
 }
