@@ -1,0 +1,292 @@
+{
+  "templates": [
+    {
+      "name": "zodiac.json",
+      "description": "Template for zodiac sign data and predictions",
+      "content": {
+        "metadata": {
+          "version": "1.0.0",
+          "lastUpdated": "2025-03-22",
+          "language": "en",
+          "itemCount": 12
+        },
+        "signs": [
+          {
+            "id": "aries",
+            "nameKey": "zodiac_aries",
+            "dateRange": "March 21 - April 19",
+            "element": "fire",
+            "symbol": "ram",
+            "rulingPlanet": "Mars",
+            "luckyNumbers": [1, 8, 17],
+            "luckyColors": ["red", "orange"],
+            "compatibleSigns": ["leo", "sagittarius"],
+            "qualities": ["cardinal"],
+            "polarity": "positive",
+            "description": "Aries is the first sign of the zodiac, symbolizing new beginnings, courage, and initiative. These individuals are known for their dynamic energy and pioneering spirit.",
+            "strengths": ["courageous", "determined", "confident", "enthusiastic", "optimistic", "honest", "passionate"],
+            "weaknesses": ["impatient", "moody", "short-tempered", "impulsive", "aggressive"],
+            "hasImage": true,
+            "imageFileName": "zodiac_aries.png",
+            "predictions": {
+              "daily": [
+                {
+                  "id": "aries_daily_1",
+                  "seed": 1,
+                  "general": "Today your natural leadership abilities shine brightly. You'll find yourself taking charge of situations effortlessly, inspiring others to follow your lead. A burst of creative energy helps you tackle problems with innovative solutions.",
+                  "love": "In matters of the heart, your passionate nature creates exciting moments with your partner or potential love interests. Be direct about your feelings, as your honesty will be appreciated.",
+                  "career": "At work, your initiative catches positive attention from superiors. It's an excellent day to present new ideas or start projects you've been contemplating.",
+                  "health": "Your energy levels are high today, making it ideal for physical activities. Consider challenging yourself with an intense workout or competitive sport.",
+                  "luckyNumber": 7,
+                  "luckyColor": "crimson",
+                  "compatibility": "leo",
+                  "mood": "energetic",
+                  "tags": ["initiative", "leadership", "creativity", "energy", "passion"]
+                },
+                {
+                  "id": "aries_daily_2",
+                  "seed": 2,
+                  "general": "Patience may be tested today as delays occur in your plans. Instead of pushing through obstacles forcefully, consider taking a step back to reassess your approach. Sometimes the indirect path leads to better outcomes.",
+                  "love": "Communication with your partner requires extra care today. Listen as much as you speak, and try to understand perspectives different from your own. Single Aries might find connections in unexpected places.",
+                  "career": "Collaborative projects highlight your day, requiring you to balance your independent nature with teamwork. Your contributions will be valuable, but so will your ability to compromise.",
+                  "health": "Focus on flexibility exercises that calm your mind while strengthening your body. Activities like yoga or swimming would be particularly beneficial today.",
+                  "luckyNumber": 3,
+                  "luckyColor": "amber",
+                  "compatibility": "libra",
+                  "mood": "contemplative",
+                  "tags": ["patience", "communication", "flexibility", "teamwork", "balance"]
+                },
+                {
+                  "id": "aries_daily_3",
+                  "seed": 3,
+                  "general": "Your pioneering spirit leads you to explore new territories today, whether literally or figuratively. This is an excellent time for starting fresh projects or learning new skills. Trust your instincts when opportunities arise.",
+                  "love": "Romance takes on an adventurous quality today. Planning something unexpected with your partner will reignite passion. Singles may find attraction with someone who shares their love for excitement.",
+                  "career": "Your innovative ideas attract attention in professional settings. Don't hesitate to speak up in meetings or present alternative approaches to problems. Your unique perspective is valued.",
+                  "health": "Channel your abundant energy into activities that challenge you physically and mentally. Consider trying a new sport or fitness routine that pushes your boundaries.",
+                  "luckyNumber": 9,
+                  "luckyColor": "scarlet",
+                  "compatibility": "sagittarius",
+                  "mood": "adventurous",
+                  "tags": ["innovation", "adventure", "beginnings", "exploration", "discovery"]
+                }
+              ],
+              "weekly": [
+                {
+                  "id": "aries_weekly_1",
+                  "weekNumber": 12,
+                  "startDate": "2025-03-17",
+                  "endDate": "2025-03-23",
+                  "general": "This week brings opportunities for personal growth through challenges that test your patience and determination. By midweek, a breakthrough moment shifts your perspective on a long-standing issue, opening new pathways forward. The weekend favors social connections and networking.",
+                  "love": "Relationship dynamics evolve through honest conversations. Partners appreciate your directness, but remember to listen as much as you speak. Single Aries might find meaningful connections through friends or community activities.",
+                  "career": "Professional developments require strategic thinking rather than impulsive action. Consider long-term implications before making important decisions. Mentorship opportunities may arise, either as recipient or provider.",
+                  "health": "Balance high-energy activities with adequate rest periods. Your physical vitality is strong, but mental burnout is possible if you don't incorporate mindfulness practices.",
+                  "tags": ["growth", "strategy", "balance", "communication", "networking"]
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "tarot.json",
+      "description": "Template for tarot card data and interpretations",
+      "content": {
+        "metadata": {
+          "version": "1.0.0",
+          "lastUpdated": "2025-03-22",
+          "language": "en",
+          "itemCount": 78,
+          "description": "Complete set of 78 tarot cards with interpretations"
+        },
+        "cards": [
+          {
+            "id": "the_fool",
+            "nameKey": "tarot_the_fool",
+            "arcana": "major",
+            "number": 0,
+            "element": "air",
+            "planetaryRuler": "Uranus",
+            "astrologicalSign": "Aquarius",
+            "hasImage": true,
+            "imageFileName": "tarot_the_fool.png",
+            "keywords": ["beginnings", "freedom", "innocence", "spirit", "opportunity", "potential"],
+            "symbology": "The Fool depicts a young traveler stepping off a cliff, carrying minimal belongings and accompanied by a white dog. The sun shines brightly overhead, symbolizing pure potential and divine guidance.",
+            "description": "The Fool represents the beginning of all potential and possibility. It is the spirit of eagerness, adventure, and wonder. The Fool encourages us to take a leap of faith and trust in the universe.",
+            "interpretations": {
+              "upright": "New beginnings, innocence, spontaneity, free spirit, taking a leap of faith, following your heart, living in the moment, being carefree, having faith in the future.",
+              "reversed": "Recklessness, carelessness, irresponsibility, naivety, foolishness, risk-taking without thought, being taken advantage of, missing opportunities."
+            },
+            "questions": [
+              "What new adventure or path is calling to you?",
+              "Where in your life might you benefit from being more spontaneous and carefree?",
+              "What leap of faith are you contemplating right now?",
+              "Are you overthinking a situation instead of trusting your instincts?"
+            ],
+            "affirmation": "I trust my journey and embrace new beginnings with an open heart.",
+            "tags": ["new beginnings", "adventure", "faith", "spontaneity", "potential"]
+          },
+          {
+            "id": "five_of_cups",
+            "nameKey": "tarot_five_of_cups",
+            "arcana": "minor",
+            "suit": "cups",
+            "number": 5,
+            "element": "water",
+            "planetaryRuler": "Mars in Scorpio",
+            "hasImage": true,
+            "imageFileName": "tarot_five_of_cups.png",
+            "keywords": ["loss", "grief", "disappointment", "regret", "focusing on the negative"],
+            "symbology": "A figure draped in black stands mourning over three spilled cups, while two full cups remain standing behind them. A river flows nearby with a bridge leading to a castle or town, symbolizing the path forward.",
+            "description": "The Five of Cups represents feelings of loss, regret, and disappointment. It reminds us that while we may be focused on what has been lost, there are still cups standing—opportunities and blessings that remain if we turn to see them.",
+            "interpretations": {
+              "upright": "Emotional disappointment, sadness, focusing on loss, inability to see the positive, dwelling on the past, self-pity, regret over past actions.",
+              "reversed": "Beginning to accept loss, finding the silver lining, gradual healing, forgiveness of self or others, moving forward from disappointment."
+            },
+            "questions": [
+              "Are you focusing too much on what's been lost rather than what remains?",
+              "What lessons can you take from this disappointment?",
+              "How might shifting your perspective help you see opportunities you're missing?",
+              "What would help you begin the process of emotional healing?"
+            ],
+            "affirmation": "I acknowledge my feelings of loss while remaining open to the good that still surrounds me.",
+            "tags": ["grief", "perspective", "emotional healing", "disappointment", "acceptance"]
+          }
+        ]
+      }
+    },
+    {
+      "name": "biorhythm.json",
+      "description": "Template for biorhythm interpretations",
+      "content": {
+        "metadata": {
+          "version": "1.0.0",
+          "lastUpdated": "2025-03-22",
+          "language": "en"
+        },
+        "cycles": {
+          "physical": {
+            "duration": 23,
+            "description": "The physical cycle affects strength, stamina, coordination, and overall physical well-being.",
+            "states": {
+              "high": [
+                {
+                  "id": "physical_high_1",
+                  "seed": 1,
+                  "intensity": 95,
+                  "interpretation": "Your physical energy is at its peak today. Your body feels strong, resilient, and capable. This is an excellent time for physical activities that require stamina and endurance. Athletic performance is enhanced, and your resistance to illness is strong.",
+                  "advice": "Make the most of this energy surge by engaging in challenging physical activities or starting a new fitness regimen. Your body can handle more intense workouts during this phase.",
+                  "tags": ["energy", "strength", "vitality", "endurance", "activity"]
+                },
+                {
+                  "id": "physical_high_2",
+                  "seed": 2,
+                  "intensity": 85,
+                  "interpretation": "Your physical capabilities are notably strong today. You'll likely notice increased endurance and a general sense of well-being. Physical tasks feel easier, and you recover quickly from exertion.",
+                  "advice": "Channel this physical energy into productive activities. Consider tackling physically demanding tasks or engaging in competitive sports where your enhanced coordination will serve you well.",
+                  "tags": ["strength", "coordination", "productivity", "competition", "recovery"]
+                }
+              ],
+              "medium": [
+                {
+                  "id": "physical_medium_1",
+                  "seed": 1,
+                  "intensity": 50,
+                  "interpretation": "Your physical energy is stable and balanced today. While not at peak levels, you have sufficient stamina for regular activities and moderate exercise. Your body responds well to routine physical demands.",
+                  "advice": "Maintain regular activity levels and focus on consistent habits rather than pushing extremes. This is a good time for refining techniques and working on form rather than pushing for personal records.",
+                  "tags": ["balance", "stability", "routine", "moderation", "technique"]
+                }
+              ],
+              "low": [
+                {
+                  "id": "physical_low_1",
+                  "seed": 1,
+                  "intensity": 15,
+                  "interpretation": "Your physical energy is at a low point in its cycle. You may feel more fatigued than usual, and physical tasks might require more effort. Recovery from exertion takes longer, and you may be more susceptible to minor ailments.",
+                  "advice": "Focus on gentle activities and adequate rest. This is not the time for starting intense new physical routines or pushing your limits. Light stretching, walking, or restorative practices like yoga are beneficial.",
+                  "tags": ["rest", "recovery", "gentleness", "restoration", "self-care"]
+                }
+              ]
+            }
+          },
+          "emotional": {
+            "duration": 28,
+            "description": "The emotional cycle influences feelings, creativity, sensitivity, mood, and interpersonal relationships.",
+            "states": {
+              "high": [
+                {
+                  "id": "emotional_high_1",
+                  "seed": 1,
+                  "intensity": 90,
+                  "interpretation": "Your emotional awareness and expression are heightened today. You're likely feeling more connected to others and to your own feelings. Creative inspiration flows easily, and your capacity for empathy and understanding is strong.",
+                  "advice": "This is an excellent time for creative projects, meaningful conversations, and cultivating relationships. Express your feelings openly and engage with art or music that moves you.",
+                  "tags": ["creativity", "connection", "expression", "empathy", "inspiration"]
+                }
+              ],
+              "medium": [],
+              "low": []
+            }
+          },
+          "intellectual": {
+            "duration": 33,
+            "description": "The intellectual cycle affects analytical thinking, memory, logic, and mental acuity.",
+            "states": {
+              "high": [],
+              "medium": [],
+              "low": []
+            }
+          },
+          "intuitive": {
+            "duration": 38,
+            "description": "The intuitive cycle influences perception beyond the five senses, gut feelings, spiritual awareness, and inner knowing.",
+            "states": {
+              "high": [],
+              "medium": [],
+              "low": []
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "quotes.json",
+      "description": "Template for inspirational quotes",
+      "content": {
+        "metadata": {
+          "version": "1.0.0",
+          "lastUpdated": "2025-03-22",
+          "language": "en",
+          "itemCount": 150
+        },
+        "quotes": [
+          {
+            "id": "quote_1",
+            "text": "The future belongs to those who believe in the beauty of their dreams.",
+            "author": "Eleanor Roosevelt",
+            "source": "As quoted in 'It Seems to Me': Selected Letters of Eleanor Roosevelt (2001)",
+            "year": 1954,
+            "category": "inspiration",
+            "length": "medium",
+            "tags": ["dreams", "future", "belief", "possibility", "hope"]
+          },
+          {
+            "id": "quote_2",
+            "text": "You do not find the happy life. You make it.",
+            "author": "Camilla Eyring Kimball",
+            "category": "happiness",
+            "length": "short",
+            "tags": ["happiness", "creation", "agency", "empowerment", "choice"]
+          },
+          {
+            "id": "quote_3",
+            "text": "The most difficult thing is the decision to act, the rest is merely tenacity. The fears are paper tigers. You can do anything you decide to do. You can act to change and control your life; and the procedure, the process is its own reward.",
+            "author": "Amelia Earhart",
+            "category": "courage",
+            "length": "long",
+            "tags": ["action", "decision", "courage", "change", "fear", "reward"]
+          }
+        ]
+      }
+    }
+  ]
+}
