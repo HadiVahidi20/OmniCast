@@ -136,12 +136,10 @@ private fun ProfileContent(
                     color = MaterialTheme.colorScheme.primary
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-
                 BirthdatePicker(
                     selectedDate = uiState.birthdate,
                     onDateSelected = onBirthdateChange
                 )
-
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = "This information is used for zodiac, biorhythm, and numerology calculations",

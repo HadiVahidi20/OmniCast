@@ -1,16 +1,14 @@
 package com.hadify.omnicast.feature.zodiac.ui
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
-
 import androidx.lifecycle.viewModelScope
+import com.hadify.omnicast.core.common.util.DateTimeUtils
+import com.hadify.omnicast.core.data.util.Resource
+import com.hadify.omnicast.feature.profile.domain.usecase.GetUserProfileUseCase
 import com.hadify.omnicast.feature.zodiac.domain.model.HoroscopeReading
 import com.hadify.omnicast.feature.zodiac.domain.model.ZodiacSign
-import com.hadify.omnicast.feature.zodiac.domain.usecase.GetUserDailyHoroscopeUseCase
 import com.hadify.omnicast.feature.zodiac.domain.usecase.DetermineZodiacSignUseCase
-import com.hadify.omnicast.feature.profile.domain.usecase.GetUserProfileUseCase
-import com.hadify.omnicast.core.data.util.Resource
+import com.hadify.omnicast.feature.zodiac.domain.usecase.GetUserDailyHoroscopeUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -39,7 +37,6 @@ class ZodiacViewModel @Inject constructor(
     /**
      * Load user's zodiac information and today's horoscope
      */
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun loadUserZodiacInfo() {
         viewModelScope.launch {
             _uiState.value = _uiState.value.copy(isLoading = true, error = null)
@@ -58,8 +55,8 @@ class ZodiacViewModel @Inject constructor(
                                 hasBirthdate = true
                             )
 
-                            // Load today's horoscope
-                            loadDailyHoroscope(user.birthdate, LocalDate.now())
+                            // Load today's horoscope using the safe DateTimeUtils
+                            loadDailyHoroscope(user.birthdate, DateTimeUtils.today())
                         } else {
                             // User hasn't set birthdate yet
                             _uiState.value = _uiState.value.copy(
@@ -123,8 +120,6 @@ class ZodiacViewModel @Inject constructor(
      * Load horoscope for a different date
      */
     fun loadHoroscopeForDate(date: LocalDate) {
-        val currentState = _uiState.value
-
         // Need user's birthdate to load horoscope
         viewModelScope.launch {
             getUserProfileUseCase().first().let { userResource ->
@@ -138,7 +133,6 @@ class ZodiacViewModel @Inject constructor(
     /**
      * Retry loading data
      */
-    @RequiresApi(Build.VERSION_CODES.O)
     fun retry() {
         loadUserZodiacInfo()
     }
@@ -176,7 +170,7 @@ data class ZodiacUiState(
     val hasBirthdate: Boolean = false,
     val userZodiacSign: ZodiacSign? = null,
     val dailyHoroscope: HoroscopeReading? = null,
-    val selectedDate: LocalDate = LocalDate.now(),
+    val selectedDate: LocalDate = DateTimeUtils.today(), // Use safe method for default date
     val error: String? = null
 )
 
