@@ -18,6 +18,8 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+        // ✅ کد اضافه‌شده برای حل مشکل
+        isCoreLibraryDesugaringEnabled = true
     }
 
     kotlinOptions {
@@ -34,6 +36,9 @@ android {
 }
 
 dependencies {
+    // ✅ وابستگی اضافه‌شده برای حل مشکل
+    coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.0.4")
+
     // Core modules
     implementation(project(":core-common"))
     implementation(project(":core-ui"))

@@ -14,7 +14,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.temporal.WeekFields
@@ -266,22 +265,22 @@ class ZodiacRepositoryImpl @Inject constructor(
      * Load zodiac data from JSON assets
      */
     private suspend fun loadZodiacData(): ZodiacDataModel {
+        // Step 1: Load the raw JSON content as a string
         val jsonResult = contentLoader.loadRawContent(ContentType.ZODIAC)
 
-        return when (jsonResult) {
-            is Resource.Success -> {
-                try {
-                    Json.decodeFromString(ZodiacDataModel.serializer(), jsonResult.data)
-                } catch (e: Exception) {
-                    throw Exception("Failed to parse zodiac JSON: ${e.message}")
-                }
-            }
-            is Resource.Error -> {
-                throw Exception("Failed to load zodiac JSON: ${jsonResult.message}")
-            }
-            is Resource.Loading -> {
-                throw Exception("Unexpected loading state")
-            }
+        val jsonString = when(jsonResult) {
+            is Resource.Success -> jsonResult.data
+            is Resource.Error -> throw Exception("Failed to load zodiac JSON: ${jsonResult.message}")
+            is Resource.Loading -> throw Exception("Unexpected loading state")
+        }
+
+        // Step 2: Use the configured parser from ContentLoader
+        val parsedResult = contentLoader.parseJson(jsonString, ZodiacDataModel.serializer())
+
+        return when(parsedResult) {
+            is Resource.Success -> parsedResult.data
+            is Resource.Error -> throw Exception("Failed to parse zodiac JSON: ${parsedResult.message}")
+            is Resource.Loading -> throw Exception("Unexpected loading state during parsing")
         }
     }
 
@@ -394,6 +393,8 @@ data class ZodiacSignData(
     val description: String,
     val strengths: List<String>,
     val weaknesses: List<String>,
+    val hasImage: Boolean? = null, // Make optional to handle absence
+    val imageFileName: String? = null, // Make optional
     val predictions: PredictionsData
 )
 
