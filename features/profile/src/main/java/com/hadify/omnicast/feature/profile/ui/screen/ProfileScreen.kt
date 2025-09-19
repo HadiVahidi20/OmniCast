@@ -262,7 +262,6 @@ private fun BirthdatePicker(
     onDateSelected: (LocalDate) -> Unit
 ) {
     var showDatePicker by remember { mutableStateOf(false) }
-    // ✅ FIXED: Removed unused datePickerState variable from here
 
     OutlinedTextField(
         value = selectedDate?.format(DateTimeFormatter.ofPattern("MMM dd, yyyy")) ?: "",
@@ -278,7 +277,7 @@ private fun BirthdatePicker(
     )
 
     if (showDatePicker) {
-        DatePickerDialog(
+        CustomDatePickerDialog(
             onDateSelected = { dateMillis ->
                 dateMillis?.let {
                     val localDate = java.time.Instant.ofEpochMilli(it)
@@ -295,11 +294,11 @@ private fun BirthdatePicker(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun DatePickerDialog(
+private fun CustomDatePickerDialog(
     onDateSelected: (Long?) -> Unit,
     onDismiss: () -> Unit
 ) {
-    val datePickerState = rememberDatePickerState() // ✅ FIXED: This variable IS used in DatePicker below
+    val datePickerState = rememberDatePickerState()
 
     DatePickerDialog(
         onDismissRequest = onDismiss,
@@ -318,6 +317,6 @@ private fun DatePickerDialog(
             }
         }
     ) {
-        DatePicker(state = datePickerState) // ✅ The datePickerState IS used here
+        DatePicker(state = datePickerState)
     }
 }
