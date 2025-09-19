@@ -1,110 +1,118 @@
 package com.hadify.omnicast.core.common.util
 
-import android.os.Build
 import java.time.LocalDate
 import java.time.LocalDateTime
-import java.util.*
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 /**
- * Utility class to handle DateTime operations safely across all API levels
- * Fixes the API 26+ compatibility issue with LocalDate/LocalDateTime
+ * Date and time utility functions
+ * Provides common date/time operations and validations
  */
 object DateTimeUtils {
 
+    // Common date formatters
+    val ISO_DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE
+    val DISPLAY_DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy")
+    val DISPLAY_DATE_TIME_FORMATTER: DateTimeFormatter = DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm")
+
+    // Date range constants
+    private val MIN_BIRTH_YEAR = 1900
+    private val MAX_FUTURE_YEARS = 0 // No future dates allowed for birthdate
+
     /**
-     * Get current LocalDateTime safely across all API levels
+     * Validates if a birthdate is reasonable
+     * Returns true if the date is between 1900 and today
      */
-    fun now(): LocalDateTime {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            LocalDateTime.now()
-        } else {
-            // Fallback for API < 26
-            val calendar = Calendar.getInstance()
-            LocalDateTime.of(
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH) + 1, // Calendar months are 0-based
-                calendar.get(Calendar.DAY_OF_MONTH),
-                calendar.get(Calendar.HOUR_OF_DAY),
-                calendar.get(Calendar.MINUTE),
-                calendar.get(Calendar.SECOND)
-            )
-        }
+    fun isValidBirthdate(birthdate: LocalDate): Boolean {
+        val today = LocalDate.now()
+        val minDate = LocalDate.of(MIN_BIRTH_YEAR, 1, 1)
+        val maxDate = today.minusYears(MAX_FUTURE_YEARS.toLong())
+
+        return birthdate.isAfter(minDate.minusDays(1)) &&
+                birthdate.isBefore(maxDate.plusDays(1))
     }
 
     /**
-     * Get current LocalDate safely across all API levels
-     */
-    fun today(): LocalDate {
-        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            LocalDate.now()
-        } else {
-            // Fallback for API < 26
-            val calendar = Calendar.getInstance()
-            LocalDate.of(
-                calendar.get(Calendar.YEAR),
-                calendar.get(Calendar.MONTH) + 1, // Calendar months are 0-based
-                calendar.get(Calendar.DAY_OF_MONTH)
-            )
-        }
-    }
-
-    /**
-     * Validate if a date is reasonable for a birthdate
-     */
-    fun isValidBirthdate(date: LocalDate): Boolean {
-        val today = today()
-        val minDate = today.minusYears(150) // No one is older than 150
-        val maxDate = today.minusDays(1)    // Must be at least 1 day old
-
-        return date.isAfter(minDate) && date.isBefore(maxDate.plusDays(1))
-    }
-
-    /**
-     * Calculate age from birthdate safely
+     * Calculates age from birthdate
      */
     fun calculateAge(birthdate: LocalDate): Int {
-        val today = today()
+        val today = LocalDate.now()
         var age = today.year - birthdate.year
 
-        // Check if birthday hasn't occurred this year yet
-        if (today.monthValue < birthdate.monthValue ||
-            (today.monthValue == birthdate.monthValue && today.dayOfMonth < birthdate.dayOfMonth)) {
+        if (today.dayOfYear < birthdate.dayOfYear) {
             age--
         }
 
-        return maxOf(0, age) // Ensure non-negative age
+        return maxOf(0, age)
     }
 
     /**
-     * Format date for display
+     * Formats a LocalDate for display
      */
     fun formatDisplayDate(date: LocalDate): String {
-        return "${date.monthValue}/${date.dayOfMonth}/${date.year}"
+        return date.format(DISPLAY_DATE_FORMATTER)
     }
 
     /**
-     * Create LocalDateTime safely with validation
+     * Formats a LocalDateTime for display
      */
-    fun createDateTime(year: Int, month: Int, day: Int, hour: Int = 0, minute: Int = 0): LocalDateTime? {
+    fun formatDisplayDateTime(dateTime: LocalDateTime): String {
+        return dateTime.format(DISPLAY_DATE_TIME_FORMATTER)
+    }
+
+    /**
+     * Parses a date string safely
+     * Returns null if parsing fails
+     */
+    fun parseDate(dateString: String): LocalDate? {
         return try {
-            val dateTime = LocalDateTime.of(year, month, day, hour, minute)
-            // Validate the created date
-            if (dateTime.year in 1900..2100) dateTime else null
-        } catch (e: Exception) {
+            LocalDate.parse(dateString, ISO_DATE_FORMATTER)
+        } catch (e: DateTimeParseException) {
             null
         }
     }
 
     /**
-     * Create LocalDate safely with validation
+     * Parses a date-time string safely
+     * Returns null if parsing fails
      */
-    fun createDate(year: Int, month: Int, day: Int): LocalDate? {
+    fun parseDateTime(dateTimeString: String): LocalDateTime? {
         return try {
-            val date = LocalDate.of(year, month, day)
-            // Basic validation
-            if (date.year in 1900..2100) date else null
-        } catch (e: Exception) {
+            LocalDateTime.parse(dateTimeString)
+        } catch (e: DateTimeParseException) {
             null
         }
+    }
+
+    /**
+     * Gets the start of the current week (Monday)
+     */
+    fun getStartOfWeek(date: LocalDate = LocalDate.now()): LocalDate {
+        return date.minusDays(date.dayOfWeek.value - 1L)
+    }
+
+    /**
+     * Gets the end of the current week (Sunday)
+     */
+    fun getEndOfWeek(date: LocalDate = LocalDate.now()): LocalDate {
+        return date.plusDays(7L - date.dayOfWeek.value)
+    }
+
+    /**
+     * Checks if a date is today
+     */
+    fun isToday(date: LocalDate): Boolean {
+        return date.isEqual(LocalDate.now())
+    }
+
+    /**
+     * Checks if a date is in the current week
+     */
+    fun isCurrentWeek(date: LocalDate): Boolean {
+        val startOfWeek = getStartOfWeek()
+        val endOfWeek = getEndOfWeek()
+        return date.isAfter(startOfWeek.minusDays(1)) &&
+                date.isBefore(endOfWeek.plusDays(1))
     }
 }

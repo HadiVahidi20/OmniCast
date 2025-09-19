@@ -46,20 +46,8 @@ enum class PredictionType {
 /**
  * App settings domain model
  */
-data class AppSettings(
-    val themeMode: ThemeMode = ThemeMode.SYSTEM,
-    val language: String = "en",
-    val notificationsEnabled: Boolean = true,
-    val dailyReminderTime: String? = null // Format: "HH:mm"
-)
+
 
 /**
  * Theme mode options
  */
-enum class ThemeMode {
-    LIGHT,
-    DARK,
-    SYSTEM,
-    ZODIAC_BASED,
-    BIORHYTHM_BASED
-}

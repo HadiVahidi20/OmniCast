@@ -1,11 +1,9 @@
-// In core-domain/build.gradle.kts
-
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
-    id("kotlinx-serialization")
+    id("org.jetbrains.kotlin.plugin.serialization") // Fixed plugin name
 }
 
 android {
@@ -14,6 +12,7 @@ android {
 
     defaultConfig {
         minSdk = 24
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
@@ -25,7 +24,7 @@ android {
         jvmTarget = "17"
     }
 
-    // این بلوک مشکل ابهام بین debug و release را برای همیشه حل می‌کند
+    // Fixed publishing configuration
     publishing {
         singleVariant("release") {
             withSourcesJar()
@@ -46,4 +45,6 @@ dependencies {
     ksp("com.google.dagger:hilt-compiler:2.48")
 
     testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

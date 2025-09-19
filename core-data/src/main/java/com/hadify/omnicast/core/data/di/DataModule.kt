@@ -1,6 +1,5 @@
 package com.hadify.omnicast.core.data.di
 
-import com.hadify.omnicast.core.data.util.Constants.DATABASE_NAME
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -9,20 +8,16 @@ import androidx.room.Room
 import com.hadify.omnicast.core.data.local.database.OmniCastDatabase
 import com.hadify.omnicast.core.data.local.dao.UserDao
 import com.hadify.omnicast.core.data.local.dao.ZodiacDao
-import com.hadify.omnicast.core.data.local.dao.PlaceholderDao
-import com.hadify.omnicast.core.data.local.datastore.UserPreferences
 import com.hadify.omnicast.core.data.source.AssetDataSource
-import com.hadify.omnicast.core.data.source.AssetDataSourceImpl
 import com.hadify.omnicast.core.data.source.ContentLoader
 import com.hadify.omnicast.core.data.repository.SettingsRepositoryImpl
 import com.hadify.omnicast.core.domain.repository.SettingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext  // ← ADDED: This import was missing!
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
-
 
 // DataStore extension
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_preferences")
@@ -36,7 +31,7 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 object DataModule {
 
     /**
-     * Provides the main Room database instance
+     * Provides the main Room database instance with proper configuration
      */
     @Provides
     @Singleton
@@ -46,8 +41,8 @@ object DataModule {
         return Room.databaseBuilder(
             context.applicationContext,
             OmniCastDatabase::class.java,
-            DATABASE_NAME)
-
+            OmniCastDatabase.DATABASE_NAME
+        )
             .fallbackToDestructiveMigration() // For development - remove in production
             .build()
     }
@@ -61,7 +56,7 @@ object DataModule {
     }
 
     /**
-     * Provides ZodiacDao from the database - CRITICAL for zodiac feature!
+     * Provides ZodiacDao from the database - CRITICAL for zodiac features!
      */
     @Provides
     fun provideZodiacDao(database: OmniCastDatabase): ZodiacDao {
@@ -69,54 +64,29 @@ object DataModule {
     }
 
     /**
-     * Provides PlaceholderDao (temporary)
-     */
-    @Provides
-    fun providePlaceholderDao(database: OmniCastDatabase): PlaceholderDao {
-        return database.placeholderDao()
-    }
-
-    /**
-     * Provides DataStore for preferences
+     * Provides DataStore for storing user preferences
      */
     @Provides
     @Singleton
-    fun provideDataStore(
-        @ApplicationContext context: Context
-    ): DataStore<Preferences> {
+    fun provideDataStore(@ApplicationContext context: Context): DataStore<Preferences> {
         return context.dataStore
     }
 
     /**
-     * Provides UserPreferences wrapper for DataStore
+     * Provides AssetDataSource for loading JSON content from assets
      */
     @Provides
     @Singleton
-    fun provideUserPreferences(
-        dataStore: DataStore<Preferences>
-    ): UserPreferences {
-        return UserPreferences(dataStore)
-    }
-
-    /**
-     * Provides AssetDataSource for loading JSON content
-     */
-    @Provides
-    @Singleton
-    fun provideAssetDataSource(
-        @ApplicationContext context: Context  // ← This now works because we imported the annotation!
-    ): AssetDataSource {
+    fun provideAssetDataSource(@ApplicationContext context: Context): AssetDataSource {
         return AssetDataSourceImpl(context)
     }
 
     /**
-     * Provides ContentLoader for parsing JSON
+     * Provides ContentLoader for parsing and caching JSON content
      */
     @Provides
     @Singleton
-    fun provideContentLoader(
-        assetDataSource: AssetDataSource  // ✅ Correct - using interface
-    ): ContentLoader {
+    fun provideContentLoader(assetDataSource: AssetDataSource): ContentLoader {
         return ContentLoader(assetDataSource)
     }
 
@@ -125,9 +95,7 @@ object DataModule {
      */
     @Provides
     @Singleton
-    fun provideSettingsRepository(
-        userPreferences: UserPreferences
-    ): SettingsRepository {
-        return SettingsRepositoryImpl(userPreferences)
+    fun provideSettingsRepository(dataStore: DataStore<Preferences>): SettingsRepository {
+        return UserPreferences(dataStore)
     }
 }
