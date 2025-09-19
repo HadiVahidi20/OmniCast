@@ -1,5 +1,6 @@
 package com.hadify.omnicast.core.data.di
 
+import com.hadify.omnicast.core.data.util.Constants.DATABASE_NAME
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -21,6 +22,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext  // ← ADDED: This import was missing!
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+
 
 // DataStore extension
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "user_preferences")
