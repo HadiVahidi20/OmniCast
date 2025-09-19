@@ -21,6 +21,20 @@ object DateTimeUtils {
     private val MAX_FUTURE_YEARS = 0 // No future dates allowed for birthdate
 
     /**
+     * Gets current LocalDateTime - ADDED for compatibility
+     */
+    fun now(): LocalDateTime {
+        return LocalDateTime.now()
+    }
+
+    /**
+     * Gets current LocalDate
+     */
+    fun today(): LocalDate {
+        return LocalDate.now()
+    }
+
+    /**
      * Validates if a birthdate is reasonable
      * Returns true if the date is between 1900 and today
      */

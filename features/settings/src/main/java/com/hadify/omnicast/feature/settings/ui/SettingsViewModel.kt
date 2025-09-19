@@ -80,6 +80,7 @@ class SettingsViewModel @Inject constructor(
                     ThemeMode.DARK -> ThemeSource.SYSTEM
                     ThemeMode.ZODIAC_BASED -> ThemeSource.ZODIAC
                     ThemeMode.BIORHYTHM_BASED -> ThemeSource.BIORHYTHM
+                    ThemeMode.SEASONAL -> ThemeSource.SEASONAL  // FIXED: Added missing SEASONAL case
                 }
                 themeManager.setThemeSource(themeSource)
 

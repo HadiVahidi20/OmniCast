@@ -31,7 +31,7 @@ class SaveUserUseCase @Inject constructor(
         val validationError = validateUser(params)
         if (validationError != null) {
             Log.w(TAG, "User validation failed: $validationError")
-            return Resource.Error(validationError)
+            return Resource.error(validationError)
         }
 
         return try {
@@ -53,7 +53,7 @@ class SaveUserUseCase @Inject constructor(
             result
         } catch (e: Exception) {
             Log.e(TAG, "Unexpected error in SaveUserUseCase", e)
-            Resource.Error("Failed to save profile: ${e.localizedMessage ?: e.message ?: "Unknown error"}")
+            Resource.error("Failed to save profile: ${e.localizedMessage ?: e.message ?: "Unknown error"}")
         }
     }
 
@@ -84,52 +84,28 @@ class SaveUserUseCase @Inject constructor(
             return "Invalid birthdate. Please select a date between 1900 and today."
         }
 
-        // Age validation (must be reasonable)
-        val age = DateTimeUtils.calculateAge(user.birthdate)
-        if (age > 150) {
-            return "Age cannot be more than 150 years"
-        }
-
-        if (age < 0) {
-            return "Birthdate cannot be in the future"
-        }
-
         // Email validation (if provided)
-        if (!user.email.isNullOrBlank()) {
-            if (user.email.length > 200) {
-                return "Email address is too long"
-            }
-
-            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(user.email).matches()) {
-                return "Invalid email address format"
+        user.email?.let { email ->
+            if (email.isNotBlank() && !isValidEmail(email)) {
+                return "Please enter a valid email address"
             }
         }
 
         // Location validation (if provided)
-        if (!user.location.isNullOrBlank()) {
-            if (user.location.length > 200) {
+        user.location?.let { location ->
+            if (location.length > 200) {
                 return "Location is too long (maximum 200 characters)"
             }
         }
 
-        // ID validation
-        if (user.id.isBlank()) {
-            return "User ID cannot be empty"
-        }
+        return null // Validation passed
+    }
 
-        // DateTime validation
-        try {
-            if (user.createdAt.year < 2020 || user.createdAt.year > 2100) {
-                return "Invalid creation date"
-            }
-
-            if (user.updatedAt.year < 2020 || user.updatedAt.year > 2100) {
-                return "Invalid update date"
-            }
-        } catch (e: Exception) {
-            return "Invalid date format"
-        }
-
-        return null // All validation passed
+    /**
+     * Simple email validation
+     */
+    private fun isValidEmail(email: String): Boolean {
+        val emailPattern = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+        return email.matches(Regex(emailPattern))
     }
 }

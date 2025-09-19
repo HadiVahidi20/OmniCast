@@ -8,7 +8,9 @@ import androidx.room.Room
 import com.hadify.omnicast.core.data.local.database.OmniCastDatabase
 import com.hadify.omnicast.core.data.local.dao.UserDao
 import com.hadify.omnicast.core.data.local.dao.ZodiacDao
+import com.hadify.omnicast.core.data.local.datastore.UserPreferences
 import com.hadify.omnicast.core.data.source.AssetDataSource
+import com.hadify.omnicast.core.data.source.AssetDataSourceImpl
 import com.hadify.omnicast.core.data.source.ContentLoader
 import com.hadify.omnicast.core.data.repository.SettingsRepositoryImpl
 import com.hadify.omnicast.core.domain.repository.SettingsRepository
@@ -91,11 +93,20 @@ object DataModule {
     }
 
     /**
+     * Provides UserPreferences for DataStore operations
+     */
+    @Provides
+    @Singleton
+    fun provideUserPreferences(dataStore: DataStore<Preferences>): UserPreferences {
+        return UserPreferences(dataStore)
+    }
+
+    /**
      * Provides SettingsRepository implementation
      */
     @Provides
     @Singleton
-    fun provideSettingsRepository(dataStore: DataStore<Preferences>): SettingsRepository {
-        return UserPreferences(dataStore)
+    fun provideSettingsRepository(userPreferences: UserPreferences): SettingsRepository {
+        return SettingsRepositoryImpl(userPreferences)
     }
 }
